@@ -1,3 +1,37 @@
+# Conda Usage
+
+## Conda Setup
+To create the conda environment run
+```
+conda env create -f environment.yml
+```
+or update it using
+```
+conda env update --file environment.yml --prune
+```
+
+To test if the environment was installed successfully use
+ ```
+ conda activate data_analysis
+ conda list
+ ```
+ 
+## Installing new packages
+First make sure that you have the current version of *enivronment.yml* by syncing via the Source Control tab in VS Code. Then update your conda environment to the newest version by running
+```
+conda env update --file environment.yml --prune
+```
+in the terminal. After this you can install a new package by executing
+```
+conda activate data_analysis
+conda install *thepackageyouwanttoadd*
+```  
+If the installation was successfull you can now update the *enivronment.yml* via
+```
+conda export --no-builds -f environment.yml
+```
+Then commit (stating the package(s) you added) and sync the updated *enivronment.yml*.
+
 # Project Task Checklist
 
 ## 1. Sample-Level Quality Control
@@ -124,38 +158,6 @@
 - **PEAK_ANNOT:** Peak Annotation & Integration  
 - **CLUSTER_MODEL:** Clustering, Modeling, Visualization & Reporting 
 
-
-# Installing new packages
-First make sure that you have the current version of *enivronment.yml* by syncing via the Source Control tab in VS Code. Then update your conda environment to the newest version by running
-```
-conda env update --file environment.yml --prune
-```
-in the terminal. After this you can install a new package by executing
-```
-conda activate data_analysis
-conda install *thepackageyouwanttoadd*
-```  
-If the installation was successfull you can now update the *enivronment.yml* via
-```
-conda export --no-builds -f environment.yml
-```
-Then commit (stating the package(s) you added) and sync the updated *enivronment.yml*.
-
-# Conda Setup
-To create the conda environment run
-```
-conda env create -f environment.yml
-```
-or update it using
-```
-conda env update --file environment.yml --prune
-```
-
-To test if the environment was installed successfully use
- ```
- conda activate data_analysis
- conda list
- ```
 # ILC-cells-Team4
 This is a repository for the current team that the students will work on &amp; submit.
 
