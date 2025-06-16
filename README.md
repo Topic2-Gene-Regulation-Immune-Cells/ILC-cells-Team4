@@ -17,7 +17,7 @@ To test if the environment was installed successfully use
  ```
  
 ## Installing new packages
-First make sure that you have the current version of *enivronment.yml* by syncing via the Source Control tab in VS Code. Then update your conda environment to the newest version by running
+First make sure that you have the current version of *environment.yml* by syncing via the Source Control tab in VS Code. Then update your conda environment to the newest version by running
 ```
 conda env update --file environment.yml --prune
 ```
@@ -26,11 +26,11 @@ in the terminal. After this you can install a new package by executing
 conda activate data_analysis
 conda install *thepackageyouwanttoadd*
 ```  
-If the installation was successfull you can now update the *enivronment.yml* via
+If the installation was successful you can now update the *environment.yml* via
 ```
 conda export --no-builds -f environment.yml
 ```
-Then commit (stating the package(s) you added) and sync the updated *enivronment.yml*.
+Then commit (stating the package(s) you added) and sync the updated *environment.yml*.
 
 # Project Task Checklist
 
