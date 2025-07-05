@@ -65,6 +65,17 @@ The last data set contains detailed information about gene structure and the pos
 8. Image source:https://www.addgene.org/mol-bio-reference/promoters/
 9. 
 
+# Results
+
+## Transcription Start Site analysis
+
+<div class="figure" style="text-align: center">
+<img src="plots/distances_to_TSS.png" width="50%" />
+<p class="caption"> <b>Fig. n.</b> Distribution of Open Chromatin Region Distance to Nearest Transcription Start Site</p>
+</div>
+
+The distance of Open Chromatin Regions to their nearest Transcription Start Site roughly follows a normal distribution with some significant peaks up- and downstream at around *300 bp* from the TSS.
+
 # Conda Usage
 
 ## Conda Setup
