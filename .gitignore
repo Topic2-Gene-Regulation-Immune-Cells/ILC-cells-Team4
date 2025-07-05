@@ -1,5 +1,3 @@
 data/
-data-processed/
 .vscode/
-data/ImmGenATAC18_ALIOCRsInfo.csv
-
+data-processed/
