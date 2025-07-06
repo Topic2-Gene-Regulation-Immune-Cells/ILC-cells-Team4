@@ -5,10 +5,12 @@ In this project, we analyzed data from RNA-seq and ATAC-seq of innate lymphoid c
   - [The gene regulatory network](#the-gene-regulatory-network)
   - [Innate lymphoid cells (ILC) and Natural Killer cells (NK)](#innate-lymphoid-cells-ilc-and-natural-killer-cells-nk)
   - [Data sets](#data-sets)
+- [Methods](#methods)
 - [Results](#results)
   - [Quality Control](#quality-control)
   - [Transcription Start Site analysis](#transcription-start-site-analysis)
   - [Regression analysis](#regression-analysis)
+- [Discussion](#discussion)
 - [References](#references)
 - [Repository Usage and Structure](#repository-usage-and-structure)
   - [Conda Environment](#conda-environment)
@@ -68,8 +70,13 @@ The RNA-seq data set shows the gene expression levels in the immune cell types f
 The third data set adds metadata and quality metrics to the ATAC-seq data and can be used to validate data quality and filter out low quality samples before the analysis.
 The last data set contains detailed information about gene structure and the position of genes in the genome. This will be used to map OCRs to certain genes and differentiate between different types of CREs, like promotors and enhancers
 
+# Methods
+TODO: Figure out if we need this or write this
 # Results
 
+TODO: Write something in general?
+
+**TODO: Add rest of results**
 ## Quality Control
 
 <div class="figure" style="text-align: center">
@@ -190,6 +197,10 @@ Repressing and activating CREs have the same likelihood to lie intragenically (4
 </div>
 
 We find that 52.5 % of CREs serve both activating and repressing roles across different target genes. These dual‑role elements may integrate complex regulatory logic or reflect context‑dependent factor binding.
+
+# Discussion
+
+TODO: Write this
 
 # References
 
