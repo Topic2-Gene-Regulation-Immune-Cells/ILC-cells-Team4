@@ -67,14 +67,126 @@ The last data set contains detailed information about gene structure and the pos
 
 # Results
 
+## Quality Control
+
+<div class="figure" style="text-align: center">
+<img src="plots/qc/correlation_atac_qc.png" width="50%" />
+<p class="caption"> <b>Fig. n.</b> Correlation heatmap of cell-type statistics to QC metrics</p>
+</div>
+
+We computed per‑sample (cell‑type) statistics — mean, median, and standard deviation of peak accessibility — and compared these to library QC metrics (total reads, duplication rate, TSS‑enrichment, etc.). There is no clear unexpected relationship in the above analysis so we will work with all of the cell types.
+
+<div class="figure" style="text-align: center">
+<img src="plots/qc/pairplot_atac.png" width="50%" />
+<p class="caption"> <b>Fig. n.</b> Pairplot of per ATAC-peak statistics against each other</p>
+</div>
+
+For each CRE, we computed mean, range (max–min), variance, coefficient of variation (std/mean), and skewness across cell types. There were no clear outliers, so no peaks were excluded from further analysis.
+
 ## Transcription Start Site analysis
 
 <div class="figure" style="text-align: center">
-<img src="plots/distances_to_TSS.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Distribution of Open Chromatin Region Distance to Nearest Transcription Start Site</p>
+<img src="plots/tss/distances_to_TSS.png" width="50%" />
+<p class="caption"> <b>Fig. n.</b> Distribution of Open Chromatin Region distance to nearest Transcription Start Site</p>
 </div>
 
 The distance of Open Chromatin Regions to their nearest Transcription Start Site roughly follows a normal distribution with some significant peaks up- and downstream at around *300 bp* from the TSS.
+
+
+<div class="figure" style="text-align: center">
+<img src="plots/tss/accessibility_vs_tss_distance.png" width="50%" />
+<p class="caption"> <b>Fig. n.</b> Scatterplot of accessibility vs Transcription Start Site distance</p>
+</div>
+
+A scatter of mean accessibility versus distance reveals a decaying trend: peaks closer to the TSS tend to be more accessible.
+
+
+<div class="figure" style="text-align: center">
+<img src="plots/tss/promoter_vs_enhancer.png" width="50%" />
+<p class="caption"> <b>Fig. n.</b> Barplot of Promoter and Enhancer mean/variation of accessibility</p>
+</div>
+
+Promoter peaks (-200bp to +150 bp of TSS) exhibit higher mean and lower variance than distal enhancers (t-test p = 0, Figure X).
+
+- Promoters: median mean = 14.19, CV = 1.17
+- Enhancers: median mean =1.72, CV = 1.63
+
+This clear separation justifies treating promoters and enhancers separately in feature filtering and clustering.
+
+<div class="figure" style="text-align: center">
+<img src="plots/tss/extragenic_vs_intragenic.png" width="50%" />
+<p class="caption"> <b>Fig. n.</b> Barplot of intragenic and extragenic Enhancer mean/variation of accessibility</p>
+</div>
+Comparing intronic enhancers (within gene bodies) to intergenic enhancers shows:
+
+- Intronic: higher average signal (median = 1.73) and lower spread (CV = 1.39). slight downstream bias in distance distribution (Figure X).
+- Intergenic: broader distance spread (CV = 1.76) and lower average signal (median = 1.70).
+
+These patterns suggest intronic enhancers are often more dynamic but also potentially more context‑specific than distal elements.
+
+<div class="figure" style="text-align: center">
+<img src="plots/tss/intragenic_vs_extragenic_distance.png" width="50%" />
+<p class="caption"> <b>Fig. n.</b> Scatterplot of enhancer accessibility vs Transcription Start Site distance classified by location</p>
+</div>
+
+## Regression analysis
+
+<div class="figure" style="text-align: center">
+<img src="plots/regression/r2_global_distribution.png" width="50%" />
+<p class="caption"> <b>Fig. n.</b> Distribution of Variance Explained by CREs in the Global Model</p>
+</div>
+
+We fitted a multivariate linear model for each gene using all CREs within ±100 kb as predictors. The distribution of global $R^2$-values (Figure X) shows a median of 0.97, indicating that the variance in gene expression across the immune cell types can be nearly completely explained by nearby chromatin accessibility for a lot of genes. 
+
+<div class="figure" style="text-align: center">
+<img src="plots/regression/beta_difference_distribution.png" width="50%" />
+<p class="caption"> <b>Fig. n.</b> Distribution of difference in CRE effect size between Global Model and ILC-only Model</p>
+</div>
+
+By refitting the same model using only ILC samples, we observed systematic shifts in CRE effect sizes ($\Delta \beta = \beta_{\text{ILC}} − \beta_{\text{Global}}$) (Figure X). The mean $\Delta \beta$ is near zero, but the distribution has heavy tails, indicating that some CREs gain or lose substantial influence when focusing on the ILC lineage.
+
+<div class="figure" style="text-align: center">
+<img src="plots/regression/top_lineage_specific_genes_heatmap.png" width="50%" />
+<p class="caption"> <b>Fig. n.</b> Heatmap of Top 20 genes with the largest variance explained difference between the models to their linked CREs</p>
+</div>
+
+We ranked genes by the increase in explained variance ($\Delta R^2 = R^2_{\rm ILC} - R^2_{\rm Global}$​). The top 20 genes show an average $\Delta R^2$ of 0.96. Heat‑mapping their linked CREs’ $\Delta\beta$ (Figure X) reveals modules of peaks that become uniquely activating in ILCs—strong candidates for lineage‑defining enhancers.
+
+<div class="figure" style="text-align: center">
+<img src="plots/regression/beta_global_vs_pearson_r.png" width="50%" />
+<p class="caption"> <b>Fig. n.</b> Scatterplot of CREs effect size vs Pearson correlation model</p>
+</div>
+
+Comparing multivariate coefficients ($\beta_{\rm Global}$​) to univariate Pearson’s $r$ (Figure X) yields a very low correlation (Pearson $\rho$ ≈ 0.005).
+
+<div class="figure" style="text-align: center">
+<img src="plots/regression/activating_vs_repressing_counts.png" width="50%" />
+<p class="caption"> <b>Fig. n.</b> Count of CREs classified by Effect Size</p>
+</div>
+
+We classify CREs by the sign of their global $\beta$: activating ($\beta>0.1$) vs repressing ($\beta<−0.1$). Activators comprise 45.1 % of CREs, while repressors are 43.9 % (Figure X), suggesting that activation and repression possess similar importance in regulation.
+
+<div class="figure" style="text-align: center">
+<img src="plots/regression/dominant_regulatory_effect_piechart.png" width="50%" />
+<p class="caption"> <b>Fig. n.</b> Piechart of dominant regulatory Effect percentage of the CREs per Gene</p>
+</div>
+
+For each gene, we determine whether the majority of its CREs are activating or repressing. Approximately 38.5 % of genes are predominantly repressed, indicating that repression can be the primary mode of expression control for a significant gene subset.
+
+<div class="figure" style="text-align: center">
+<img src="plots/regression/promoter_vs_enhancer_effects.png" width="40%" />
+<img src="plots/regression/intragenic_vs_extragenic_effects.png" width="40%" />
+<p class="caption"> <b>Fig. n.</b> Distribution of activating and repressing roles in Promoters/Enhancers and in intragenic/extragenic Enhancers</p>
+</div>
+
+Repressing and activating CREs have the same likelihood to lie intragenically (45.7 %),  but repressing CREs are slightly less enriched at promoters (57.6 % vs 59.3 % for activators) (Figure X). This suggests that promoter‑proximal sites slightly favor activating regulatory roles.
+
+<div class="figure" style="text-align: center">
+<img src="plots/regression/cre_regulatory_roles_pie_chart.png" width="50%" />
+<p class="caption"> <b>Fig. n.</b> Piechart of Regulatory Effect roles percentage of the CREs</p>
+</div>
+
+We find that 52.5 % of CREs serve both activating and repressing roles across different target genes. These dual‑role elements may integrate complex regulatory logic or reflect context‑dependent factor binding.
 
 # Conda Usage
 
@@ -109,145 +221,3 @@ If the installation was successful you can now update the *environment.yml* via
 conda export --no-builds -f environment.yml
 ```
 Then commit (stating the package(s) you added) and sync the updated *environment.yml*.
-
-# Project Task Checklist
-
-## 1. Sample-Level Quality Control
-- **ATAC-seq QC:**
-  - Compute per-cell mean, median, standard deviation of accessibility.
-  - Correlate these metrics with QC metadata (PF.reads, TSS.enrichment, InputCellNumber).
-  - Plot distributions (histograms, scatterplots) of accessibility metrics.
-  - Identify and remove or normalize outlier samples.
-- **RNA-seq QC:**
-  - Compute per-cell mean, median, standard deviation, and zero-expression fraction.
-  - Correlate expression metrics with QC metadata (PF.reads, InputCellNumber).
-  - Plot distributions of expression metrics.
-  - Identify and remove or normalize outlier samples.
-
-## 2. Peak-Level Quality & Annotation
-- Compute per-peak statistics (mean accessibility, variance, coefficient of variation).
-- Filter out peaks with low mean accessibility or low variance.
-- Annotate peaks as promoters vs. enhancers (±1 kb TSS overlap).
-- Calculate distance of each peak to the nearest TSS.
-- Annotate peaks as intronic vs. intergenic using exon coordinates.
-- Plot peak-level distributions (promoter vs enhancer, distance vs accessibility, intronic vs intergenic).
-
-## 3. Chromatin Landscape Analysis
-- Compare promoter vs. enhancer accessibility (boxplots, statistical tests).
-- Analyze relationship between peak accessibility and TSS distance (scatterplot, correlation).
-- Compare intronic vs. intergenic peak accessibility.
-
-## 4. Cell-Type Clustering
-- Perform dimensionality reduction (PCA or UMAP) on the ATAC-seq matrix.
-- Hierarchical clustering of cell–cell correlation matrix for ATAC-seq.
-- Repeat PCA/UMAP and clustering on the RNA-seq matrix.
-- Quantify clustering quality (silhouette score, intra- vs. inter-lineage correlations).
-
-## 5. CRE Module Discovery
-- Standardize each peak’s accessibility profile (row-wise z-score).
-- Cluster peaks into modules (k-means or hierarchical clustering).
-- Visualize modules as heatmaps and centroid profiles.
-- Annotate modules by lineage specificity and perform motif enrichment.
-
-## 6. ATAC–RNA Integration & Modeling
-- Link peaks to genes by proximity and correlation of accessibility vs. expression.
-- Build multivariate regression models predicting gene expression from associated peaks.
-- Summarize variance explained (R² distribution) and identify key peaks.
-- Classify peaks as activating vs. repressing based on regression coefficients.
-
-## 7. Network Inference & TF Analysis
-- Identify TF motifs in CREs and integrate with TF expression data.
-- Construct directed TF → CRE → gene regulatory networks.
-- Rank TFs by network centrality or variance explained.
-- Visualize key regulatory circuits.
-
-## 8. Reporting & Presentation
-- Compile QC, clustering, module, regression, and network figures into final report.
-- Draft methods, results, and discussion sections.
-- Prepare poster for final presentation.
-
-## Milestone 1: Data Preparation & QC
-
-| Issue                                                         | Assignee     | Description                                                                          |
-|---------------------------------------------------------------|--------------|--------------------------------------------------------------------------------------|
-| Collapse ATAC replicates by CellType                          | ATAC_QC      | Group ATAC‐seq columns by CellType and average replicates.                           |
-| Collapse RNA replicates by CellType                           | RNA_QC       | Group RNA‐seq columns by CellType and average replicates.                            |
-| Compute ATAC sample-level QC metrics                          | ATAC_QC      | Calculate mean/median/std accessibility per cell; merge QC metrics from metadata.    |
-| Compute RNA sample-level QC metrics                           | RNA_QC       | Calculate mean/median/std expression and zero-fraction per cell; merge QC metrics.   |
-| Plot ATAC QC distributions                                    | ATAC_QC      | Histograms and scatterplots of ATAC QC metrics.                                      |
-| Plot RNA QC distributions                                     | RNA_QC       | Histograms and scatterplots of RNA QC metrics.                                       |
-
----
-
-## Milestone 2: Peak-Level Analysis
-
-| Issue                                                         | Assignee     | Description                                                                          |
-|---------------------------------------------------------------|--------------|--------------------------------------------------------------------------------------|
-| Compute per-peak accessibility statistics                     | PEAK_ANNOT   | Calculate mean, variance, CV for each peak; save `peak_stats.csv`.                   |
-| Filter low-signal/low-variance peaks                           | PEAK_ANNOT   | Remove peaks below mean/accessibility and variance thresholds.                       |
-| Annotate peaks as promoters vs enhancers                      | PEAK_ANNOT   | Label peaks overlapping ±1kb of TSS as promoters, others as enhancers.               |
-| Compute distance to nearest TSS for each peak                 | PEAK_ANNOT   | Calculate `dist_to_tss` and add to `peak_stats.csv`.                                 |
-| Annotate intronic vs intergenic peaks                         | PEAK_ANNOT   | Label peaks within exons as intronic, others as intergenic.                          |
-| Visualize peak-level distributions                            | PEAK_ANNOT   | Boxplots and scatterplots comparing promoters, enhancers, intronic vs intergenic.    |
-
----
-
-## Milestone 3: Clustering & Module Discovery
-
-| Issue                                                         | Assignee       | Description                                                                          |
-|---------------------------------------------------------------|----------------|--------------------------------------------------------------------------------------|
-| Perform PCA/UMAP on ATAC matrix                               | CLUSTER_MODEL  | Run PCA/UMAP on `atac_by_celltype.csv`; save embeddings and plots.                   |
-| Hierarchical clustering on ATAC correlation matrix             | CLUSTER_MODEL  | Compute cell–cell Pearson correlation heatmap.                                       |
-| Perform PCA/UMAP on RNA matrix                                | CLUSTER_MODEL  | Run PCA/UMAP on `rna_by_celltype.csv`; save embeddings and plots.                    |
-| Hierarchical clustering on RNA correlation matrix              | CLUSTER_MODEL  | Compute sample–sample RNA correlation heatmap.                                       |
-| Define CRE modules via k-means                                 | CLUSTER_MODEL  | Cluster row-standardized peaks into modules (k≈50); save module assignments.         |
-| Visualize CRE modules & centroid profiles                      | CLUSTER_MODEL  | Heatmaps of CRE modules and line plots of module centroids.                         |
-
----
-
-## Milestone 4: ATAC–RNA Integration & Network Inference
-
-| Issue                                                         | Assignee       | Description                                                                          |
-|---------------------------------------------------------------|----------------|--------------------------------------------------------------------------------------|
-| Link peaks to genes by proximity and correlation              | PEAK_ANNOT     | Assign peaks to nearby genes and compute accessibility–expression correlation.       |
-| Build regression models for gene expression                   | CLUSTER_MODEL  | Fit multivariate linear models: expression ~ accessibility of associated peaks.      |
-| Summarize variance explained by CREs                          | CLUSTER_MODEL  | Plot R² distribution; identify top CRE explainers.                                   |
-| Identify activating vs repressing CREs                        | PEAK_ANNOT     | Classify CREs based on regression coefficients (positive vs negative).               |
-| Perform TF motif enrichment in lineage-specific modules       | PEAK_ANNOT     | Run motif enrichment per module; save top motifs.                                    |
-| Construct TF → CRE → gene regulatory network                  | CLUSTER_MODEL  | Integrate motif, accessibility, and expression to build and visualize networks.      |
-
----
-
-## Milestone 5: Reporting & Presentation
-
-| Issue                                                         | Assignee       | Description                                                                          |
-|---------------------------------------------------------------|----------------|--------------------------------------------------------------------------------------|
-| Compile QC & clustering figures into report                   | CLUSTER_MODEL  | Collect all figures into a PDF or markdown report.                                   |
-| Draft methods section                                         | PEAK_ANNOT     | Document all data processing, QC, annotation, and analysis methods.                  |
-| Draft results & discussion                                    | RNA_QC         | Summarize findings: variability, clusters, CRE modules, regression, networks.        |
-| Develop slide deck for project proposal                       | CLUSTER_MODEL  | Create 10-minute proposal slides.                                                    |
-| Develop slide deck for final presentation                     | CLUSTER_MODEL  | Prepare 15-minute final presentation slides.                                         |
-
----
-
-**Roles:**
-- **ATAC_QC:** ATAC-seq Quality Control & Exploration  
-- **RNA_QC:** RNA-seq Quality Control & Exploration  
-- **PEAK_ANNOT:** Peak Annotation & Integration  
-- **CLUSTER_MODEL:** Clustering, Modeling, Visualization & Reporting 
-
-# ILC-cells-Team4
-This is a repository for the current team that the students will work on &amp; submit.
-
-
-Dear Team4, 
-
-you can use this ReadMe file to construct your project, summarise ideas, and present results. 
-
-The project guideline and requirements were kindly summarised by Alexander [here](https://github.com/maiwen-ch/2025_Data_Analysis_Topic_02_Gene_Regulation_of_Immune_Cells). Please read through this repo very carefully and start gathering your own ideas!
-
-You will have to submit a Jupyter Notebook with your code & plotting/results, so make sure we can find it in this repository at the end. 
-
-Also, do not forget to clean up this ReadMe and edit it, so that any external member of the course could read & comprehend what you did in your project. 
-
-Good luck! 
