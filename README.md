@@ -153,7 +153,7 @@ By comparing the results by doing both PCA and UMAP we can see in both the same 
 </div>
 
 <div class="figure" style="text-align: center">
-<img src="Clustering_RNA-seq/pca_celltypes.png" width="50%" />
+<img src="plots/Clustering_RNA-seq/pca_celltypes.png" width="50%" />
 <p class="caption"> <b>Fig. n.</b> PCA by cell type using RNA-seq data</p>
 </div>
 
