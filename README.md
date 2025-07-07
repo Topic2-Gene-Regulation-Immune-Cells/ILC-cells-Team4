@@ -362,6 +362,19 @@ Repressing and activating CREs have the same likelihood to lie intragenically (4
 
 We find that 52.5 % of CREs serve both activating and repressing roles across different target genes. These dual‑role elements may integrate complex regulatory logic or reflect context‑dependent factor binding.
 
+<div class="figure" style="text-align: center">
+<img src="?" width="100%" />
+<p class="caption"> <b>Fig. n.</b> Piechart of Regulatory Effect roles percentage of the CREs</p>
+</div>
+
+Clustering based solely on accessibility patterns for peaks that correlate to gene expression. Roughly 100.000 peaks from the 500.000 can be certainly classified as CREs based on correlation analysis. From the UMAP 4 clusters can be seen. The largest blue one represents the majority of CREs so it represents the “default” accessibility pattern among peaks that correlate with expression. 
+These two hexbin plots are showing the smoothed density of activator‐linked CREs (left) versus repressor‐linked CREs (right) in the same UMAP embedding (which was built only from accessibility).Because both activators and repressors sit in largely the same UMAP cloud, accessibility patterns alone do not perfectly separate activating vs. repressing CREs. 
+- Clustering the associated peaks shows a similar accessibility profiles for activators and repressors.
+- Re-clustering the peaks after assigning them direction (as activators or repressors) slightly changes the output showing that effect direction can to some extent separate regulatory niches.
+- The small differences lead to the conclusion that both activating and repressing CREs might act together to manage a robust regulatory network.
+- Statistical testing (such as Fischer's exact and χ²) confirmed the non-random distribution of CREs across clusters, while a high ARI index and a small shift in the activator/repressor fractions after re-clustering point to only modest re-partitioning of the original accessibility-based groups.
+
+
 # Discussion
 
 Our Integrative analysis of the ATAC-seq and RNA-seq data reveals a complex regulatory architecture in ILCs. 
