@@ -211,39 +211,40 @@ Cluster 4 CREs also show dynamic regulation during NK development in the bone ma
 
 ## Clustering by expression profile
 
-<div class="figure" style="text-align: center">
-<img src="https://github.com/user-attachments/assets/803011bd-c911-40c8-b018-de803a8a7be1" width="40%" />
-<img src="https://github.com/user-attachments/assets/6818cf30-41cb-4cae-8a28-953d074cb54f" width="40%" />
-<p class="caption"> <b>Fig. 19.</b> PCA of ILC cells</p>
-</div>
-
-The cell lineages are clustered based on their peaks in the left figure. PC1 clearly separates NK and ILC cells, while PC2 distinguishes ILC2 from ILC3. While PCA analysis based on gene expression (right) show a similar separation of lineages, with a more clear distinction for a certain type of NK cells (NK.27-11b+.BM).
 Gene Expression profile usually reveals important information about cell differentiation and regulation. We tried different clustering techniques to see if we could find differentially expressed genes for ILC and their subtypes. Comparing the expression profiles we could make different hypotheses of how ILC subtypes are related to each other. 
 By comparing the results by doing both PCA and UMAP we can see in both the same Cell subtypes cluster together.
 
 <div class="figure" style="text-align: center">
 <img src="plots/Clustering_RNA-seq/umap_celltypes.png" width="50%" />
-<p class="caption"> <b>Fig. 20.</b> UMAP by cell type using RNA-seq data</p>
+<p class="caption"> <b>Fig. 19.</b> UMAP by cell type using RNA-seq data</p>
 </div>
 
 <div class="figure" style="text-align: center">
 <img src="plots/Clustering_RNA-seq/pca_celltypes.png" width="50%" />
-<p class="caption"> <b>Fig. 21.</b> PCA by cell type using RNA-seq data</p>
+<p class="caption"> <b>Fig. 20.</b> PCA by cell type using RNA-seq data</p>
 </div>
 
 Then we used log2-Fold and z-score of expression profile to find the most variable genes in ILC compared to all other cell types. The results can be seen on this heatmap. 
 
 <div class="figure" style="text-align: center">
 <img src="plots/Clustering_RNA-seq/Specific_Genes.png" width="50%" />
-<p class="caption"> <b>Fig. 22.</b> Top 20 ILC specific genes based on Gene Expression profile</p>
+<p class="caption"> <b>Fig. 21.</b> Top 20 ILC specific genes based on Gene Expression profile</p>
 </div>
 
 To find subclusters of special interest between our cell subtypes, we calculated the z-score after transforming the RNA-seq data with log2. We visualized the results with a heatmap and used hierarchical clustering to show possible subclusters. The results were expected and comparable with the k-means clustering in UMAP and PCA. ILC clusters together and so do NK cells. 
 
 <div class="figure" style="text-align: center">
 <img src="plots/Clustering_RNA-seq/heatmap_ILC_NK_genes.png" width="50%" />
-<p class="caption"> <b>Fig. 23.</b> Top upregulated Genes across ILC subtypes </p>
+<p class="caption"> <b>Fig. 22.</b> Top upregulated Genes across ILC subtypes </p>
 </div>
+
+<div class="figure" style="text-align: center">
+<img src="https://github.com/user-attachments/assets/803011bd-c911-40c8-b018-de803a8a7be1" width="40%" />
+<img src="https://github.com/user-attachments/assets/6818cf30-41cb-4cae-8a28-953d074cb54f" width="40%" />
+<p class="caption"> <b>Fig. 23.</b> PCA of ILC cells for RNA-seq (left) and ATAC-seq (right)</p>
+</div>
+
+The cell lineages are clustered based on their peaks in the right figure. PC1 clearly separates NK and ILC cells, while PC2 distinguishes ILC2 from ILC3. While PCA analysis based on gene expression (left) show a similar separation of lineages, with a more clear distinction for a certain type of NK cells (NK.27-11b+.BM).
 
 ## Correlation Analysis between CREs and Gene Expression
 
