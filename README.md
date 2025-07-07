@@ -77,9 +77,6 @@ The last data set contains detailed information about gene structure and the pos
 
 # Results
 
-TODO: Write something in general?
-
-**TODO: Add rest of results**
 ## Quality Control
 
 <div class="figure" style="text-align: center">
@@ -214,39 +211,40 @@ Cluster 4 CREs also show dynamic regulation during NK development in the bone ma
 
 ## Clustering by expression profile
 
-<div class="figure" style="text-align: center">
-<img src="https://github.com/user-attachments/assets/803011bd-c911-40c8-b018-de803a8a7be1" width="40%" />
-<img src="https://github.com/user-attachments/assets/6818cf30-41cb-4cae-8a28-953d074cb54f" width="40%" />
-<p class="caption"> <b>Fig. 29.</b> PCA of ILC cells</p>
-</div>
-
-The cell lineages are clustered based on their peaks in the left figure. PC1 clearly separates NK and ILC cells, while PC2 distinguishes ILC2 from ILC3. While PCA analysis based on gene expression (right) show a similar separation of lineages, with a more clear distinction for a certain type of NK cells (NK.27-11b+.BM).
 Gene Expression profile usually reveals important information about cell differentiation and regulation. We tried different clustering techniques to see if we could find differentially expressed genes for ILC and their subtypes. Comparing the expression profiles we could make different hypotheses of how ILC subtypes are related to each other. 
 By comparing the results by doing both PCA and UMAP we can see in both the same Cell subtypes cluster together.
 
 <div class="figure" style="text-align: center">
 <img src="plots/Clustering_RNA-seq/umap_celltypes.png" width="50%" />
-<p class="caption"> <b>Fig. 20.</b> UMAP by cell type using RNA-seq data</p>
+<p class="caption"> <b>Fig. 19.</b> UMAP by cell type using RNA-seq data</p>
 </div>
 
 <div class="figure" style="text-align: center">
 <img src="plots/Clustering_RNA-seq/pca_celltypes.png" width="50%" />
-<p class="caption"> <b>Fig. 21.</b> PCA by cell type using RNA-seq data</p>
+<p class="caption"> <b>Fig. 20.</b> PCA by cell type using RNA-seq data</p>
 </div>
 
 Then we used log2-Fold and z-score of expression profile to find the most variable genes in ILC compared to all other cell types. The results can be seen on this heatmap. 
 
 <div class="figure" style="text-align: center">
 <img src="plots/Clustering_RNA-seq/Specific_Genes.png" width="50%" />
-<p class="caption"> <b>Fig. 22.</b> Top 20 ILC specific genes based on Gene Expression profile</p>
+<p class="caption"> <b>Fig. 21.</b> Top 20 ILC specific genes based on Gene Expression profile</p>
 </div>
 
 To find subclusters of special interest between our cell subtypes, we calculated the z-score after transforming the RNA-seq data with log2. We visualized the results with a heatmap and used hierarchical clustering to show possible subclusters. The results were expected and comparable with the k-means clustering in UMAP and PCA. ILC clusters together and so do NK cells. 
 
 <div class="figure" style="text-align: center">
 <img src="plots/Clustering_RNA-seq/heatmap_ILC_NK_genes.png" width="50%" />
-<p class="caption"> <b>Fig. 23.</b> Top upregulated Genes across ILC subtypes </p>
+<p class="caption"> <b>Fig. 22.</b> Top upregulated Genes across ILC subtypes </p>
 </div>
+
+<div class="figure" style="text-align: center">
+<img src="https://github.com/user-attachments/assets/803011bd-c911-40c8-b018-de803a8a7be1" width="40%" />
+<img src="https://github.com/user-attachments/assets/6818cf30-41cb-4cae-8a28-953d074cb54f" width="40%" />
+<p class="caption"> <b>Fig. 23.</b> Clustering of ILC and NK cells based on OCRs (left) or gene expression (right)</p>
+</div>
+
+The cell lineages are clustered based on their peaks in the right figure. PC1 clearly separates NK and ILC cells, while PC2 distinguishes ILC2 from ILC3. While PCA analysis based on gene expression (left) show a similar separation of lineages, with a more clear distinction for a certain type of NK cells (NK.27-11b+.BM).
 
 ## Correlation Analysis between CREs and Gene Expression
 
@@ -254,7 +252,7 @@ After analyzing the RNA-seq and ATAC-seq data separately, the next step was to s
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/OCRs_Activators_vs_Repressors_per_Category.png" width="50%" />
-<p class="caption"> <b>Fig. 24. </b>b> Genomic Distibution of activating vs repressing CREs</p>
+<p class="caption"> <b>Fig. 24. </b> Genomic Distibution of activating vs repressing CREs</p>
 </div>
 
 OCRs are mostly located in introns or intergenic genome sequences.
@@ -262,7 +260,7 @@ This information can also be proved in the plot comparing the distance between T
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Distance_CRE-TSS.png" width="50%" />
-<p class="caption"> <b>Fig. 25. </b>b> Distance between CREs and the nearest TSS</p>
+<p class="caption"> <b>Fig. 25. </b> Distance between CREs and the nearest TSS</p>
 </div>
 
 We filtered for positive Pearson correlations between accessibility signals and expression profiles, this way we are only analyzing activating CREs that act as enhancers and promoters. There are 49990 positive associated OCRs to genes with an average correlation 0.37, this value proves that Activators elevate gene expression as expected. Filtering for negative correlations showed us that there are 48602 OCRs that negatively regulate Genes with an average correlation of -0.29. 
@@ -270,21 +268,21 @@ We used a heatmap to portray the Gene-OCR with the highest Correlation.
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Combined_OCR_Gene_Correlation.png" width="50%" />
-<p class="caption"> <b>Fig. 26. </b>b> Highest OCR-Gene Association</p>
+<p class="caption"> <b>Fig. 26. </b> Highest OCR-Gene Association</p>
 </div>
 
 We wanted to see where the most associated CREs to each gene were located. The Histogram shows the genomic category of all Top OCR-Gene Associations. Most are located on Introns or intergenic non-coding sequences. 
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Genomic_Categories_more_associated_CRE.png" width="50%" />
-<p class="caption"> <b>Fig. 27. </b>b> Genomic Categories of the most associated CREs</p>
+<p class="caption"> <b>Fig. 27. </b> Genomic Categories of the most associated CREs</p>
 </div>
 
 Later we counted how many associated CREs are located in promoter regions. The following pie chart shows the genomic category for both activators and repressors. Only 5.8% of associated CREs are located on promoters. 
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Combined_OCRs_Genomic_Category.png" width="50%" />
-<p class="caption"> <b>Fig. 28. </b>b> Genomic Categories of all OCR-Gene Association</p>
+<p class="caption"> <b>Fig. 28. </b> Genomic Categories of all OCR-Gene Association</p>
 </div>
 
 We also counted the amount of Genes associated with promoters. There are only 1833 Genes with CREs on their Promoters, this means that not all Genes associate with a promoter. This could be because the promoter was not accessible by the time of the measurements and blocked by transcription factors, or the other genes are regulated by distal CREs like Repressors and Enhancers. There are also no promoters that associate with more than one gene.
@@ -293,14 +291,14 @@ Most of the closest associated Activators to each gene are located on promoters,
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Genomic_Category_of_Closest_CRE_to_Gene.png" width="50%" />
-<p class="caption"> <b>Fig. 29. </b>b> Genomic Categories of the closest associated CREs to ech Gene</p>
+<p class="caption"> <b>Fig. 29. </b> Genomic Categories of the closest associated CREs to ech Gene</p>
 </div>
 
 Lastly, we wanted to see if Genes were regulated by more than one CRE. We counted how many CREs were associated with each gene and found out that there are genes with complex regulatory networks like Foxp1 with 383 associated Activators and 157 associated Repressors. However, most genes are only associated to a small amount of CREs.
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Distribution_associated_CREs_per_gene.png" width="50%" />
-<p class="caption"> <b>Fig. 30. </b>b> Distribution of associated CREs per Gene</p>
+<p class="caption"> <b>Fig. 30. </b> Distribution of associated CREs per Gene</p>
 </div>
 
 ## Regression analysis
@@ -371,7 +369,7 @@ We find that 52.5 % of CREs serve both activating and repressing roles across 
 
 <div class="figure" style="text-align: center">
 <img src="https://github.com/user-attachments/assets/228ddd94-4ed1-4f57-97e8-60c08992cbc0" width="100%" />
-<p class="caption"> <b>Fig. 40.</b> UMAP plots</p>
+<p class="caption"> <b>Fig. 40.</b> UMAP plots: Top left- clustering of associated peaks based on accessibility profiles; Bottom- hexbin plots that shows the distribution of activators compared to repressors with the same UMAP embedding; Top right- clustering after assigning each peak an additional dimension (as activator +1 or repressor -1)</p>
 </div>
 
 Clustering based solely on accessibility patterns for peaks that correlate to gene expression. Roughly 100.000 peaks from the 500.000 can be certainly classified as CREs based on correlation analysis. From the UMAP 4 clusters can be seen. The largest blue one represents the majority of CREs so it represents the “default” accessibility pattern among peaks that correlate with expression. 
@@ -410,7 +408,6 @@ In Conclusion, our findings contribute to a deeper understanding of the gene reg
 - <a id="9">[9]</a> Vivier, E., Artis, D., Colonna, M., Diefenbach, A., Di Santo, J. P., Eberl, G., Koyasu, S., Locksley, R. M., McKenzie, A. N. J., Mebius, R. E., Powrie, F., & Spits, H. (2018). Innate Lymphoid Cells: 10 Years On. Cell, 174(5), 1054–1066. https://doi.org/10.1016/j.cell.2018.07.017
 
 # Repository Usage and Structure
-TODO: Write more info here
 
 To download the data files we used and setup the structure for the data processing run the [00_setup.ipynb](00_setup.ipynb) notebook. This will automatically download the necessary files and create additional folders. If a download fails for some reason you can manually download them and place them in the **data/** directory.
 
@@ -456,9 +453,11 @@ Then commit (stating the package(s) you added) and sync the updated **environmen
 ├───data-processed          - data processed by jupyter notebooks
 ├───figures                 - external figures used in the readme
 ├───plots                   - plots generated by jupyter notebooks
+│   ├───Clustering_RNA-seq
+│   ├───Correlation
 │   ├───qc
 │   ├───regression
-│   ├───Correlation
-│   ├───Clustering_RNA-seq
 │   └───tss
+├───Question 1. iv          - jupyter notebooks for question 1. iv
+└───Question_1_iii          - jupyter notebooks for question 1. iii
 ```
