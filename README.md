@@ -5,7 +5,6 @@ In this project, we analyzed data from RNA-seq and ATAC-seq of innate lymphoid c
   - [The gene regulatory network](#the-gene-regulatory-network)
   - [Innate lymphoid cells (ILC) and Natural Killer cells (NK)](#innate-lymphoid-cells-ilc-and-natural-killer-cells-nk)
   - [Data sets](#data-sets)
-- [Methods](#methods)
 - [Results](#results)
   - [Quality Control](#quality-control)
   - [Transcription Start Site analysis](#transcription-start-site-analysis)
@@ -76,8 +75,6 @@ The RNA-seq data set shows the gene expression levels in the immune cell types f
 The third data set adds metadata and quality metrics to the ATAC-seq data and can be used to validate data quality and filter out low quality samples before the analysis.
 The last data set contains detailed information about gene structure and the position of genes in the genome. This will be used to map OCRs to certain genes and differentiate between different types of CREs, like promotors and enhancers
 
-# Methods
-TODO: Figure out if we need this or write this
 # Results
 
 TODO: Write something in general?
@@ -206,26 +203,26 @@ By comparing the results by doing both PCA and UMAP we can see in both the same 
 
 <div class="figure" style="text-align: center">
 <img src="plots/Clustering_RNA-seq/umap_celltypes.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> UMAP by cell type using RNA-seq data</p>
+<p class="caption"> <b>Fig. 20.</b> UMAP by cell type using RNA-seq data</p>
 </div>
 
 <div class="figure" style="text-align: center">
 <img src="plots/Clustering_RNA-seq/pca_celltypes.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> PCA by cell type using RNA-seq data</p>
+<p class="caption"> <b>Fig. 21.</b> PCA by cell type using RNA-seq data</p>
 </div>
 
 Then we used log2-Fold and z-score of expression profile to find the most variable genes in ILC compared to all other cell types. The results can be seen on this heatmap. 
 
 <div class="figure" style="text-align: center">
 <img src="plots/Clustering_RNA-seq/Specific_Genes.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Top 20 ILC specific genes based on Gene Expression profile</p>
+<p class="caption"> <b>Fig. 22.</b> Top 20 ILC specific genes based on Gene Expression profile</p>
 </div>
 
 To find subclusters of special interest between our cell subtypes, we calculated the z-score after transforming the RNA-seq data with log2. We visualized the results with a heatmap and used hierarchical clustering to show possible subclusters. The results were expected and comparable with the k-means clustering in UMAP and PCA. ILC clusters together and so do NK cells. 
 
 <div class="figure" style="text-align: center">
 <img src="plots/Clustering_RNA-seq/heatmap_ILC_NK_genes.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Top upregulated Genes across ILC subtypes </p>
+<p class="caption"> <b>Fig. 23.</b> Top upregulated Genes across ILC subtypes </p>
 </div>
 
 ## Correlation Analysis between CREs and Gene Expression
@@ -234,7 +231,7 @@ After analyzing the RNA-seq and ATAC-seq data separately, the next step was to s
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/OCRs_Activators_vs_Repressors_per_Category.png" width="50%" />
-<p class="caption"> <b>Fig. n. </b>b> Genomic Distibution of activating vs repressing CREs</p>
+<p class="caption"> <b>Fig. 24. </b>b> Genomic Distibution of activating vs repressing CREs</p>
 </div>
 
 OCRs are mostly located in introns or intergenic genome sequences.
@@ -242,7 +239,7 @@ This information can also be proved in the plot comparing the distance between T
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Distance_CRE-TSS.png" width="50%" />
-<p class="caption"> <b>Fig. n. </b>b> Distance between CREs and the nearest TSS</p>
+<p class="caption"> <b>Fig. 25. </b>b> Distance between CREs and the nearest TSS</p>
 </div>
 
 We filtered for positive Pearson correlations between accessibility signals and expression profiles, this way we are only analyzing activating CREs that act as enhancers and promoters. There are 49990 positive associated OCRs to genes with an average correlation 0.37, this value proves that Activators elevate gene expression as expected. Filtering for negative correlations showed us that there are 48602 OCRs that negatively regulate Genes with an average correlation of -0.29. 
@@ -250,21 +247,21 @@ We used a heatmap to portray the Gene-OCR with the highest Correlation.
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Combined_OCR_Gene_Correlation.png" width="50%" />
-<p class="caption"> <b>Fig. n. </b>b> Highest OCR-Gene Association</p>
+<p class="caption"> <b>Fig. 26. </b>b> Highest OCR-Gene Association</p>
 </div>
 
 We wanted to see where the most associated CREs to each gene were located. The Histogram shows the genomic category of all Top OCR-Gene Associations. Most are located on Introns or intergenic non-coding sequences. 
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Genomic_Categories_more_associated_CRE.png" width="50%" />
-<p class="caption"> <b>Fig. n. </b>b> Genomic Categories of the most associated CREs</p>
+<p class="caption"> <b>Fig. 27. </b>b> Genomic Categories of the most associated CREs</p>
 </div>
 
 Later we counted how many associated CREs are located in promoter regions. The following pie chart shows the genomic category for both activators and repressors. Only 5.8% of associated CREs are located on promoters. 
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Combined_OCRs_Genomic_Category.png" width="50%" />
-<p class="caption"> <b>Fig. n. </b>b> Genomic Categories of all OCR-Gene Association</p>
+<p class="caption"> <b>Fig. 28. </b>b> Genomic Categories of all OCR-Gene Association</p>
 </div>
 
 We also counted the amount of Genes associated with promoters. There are only 1833 Genes with CREs on their Promoters, this means that not all Genes associate with a promoter. This could be because the promoter was not accessible by the time of the measurements and blocked by transcription factors, or the other genes are regulated by distal CREs like Repressors and Enhancers. There are also no promoters that associate with more than one gene.
@@ -273,14 +270,14 @@ Most of the closest associated Activators to each gene are located on promoters,
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Genomic_Category_of_Closest_CRE_to_Gene.png" width="50%" />
-<p class="caption"> <b>Fig. n. </b>b> Genomic Categories of the closest associated CREs to ech Gene</p>
+<p class="caption"> <b>Fig. 29. </b>b> Genomic Categories of the closest associated CREs to ech Gene</p>
 </div>
 
 Lastly, we wanted to see if Genes were regulated by more than one CRE. We counted how many CREs were associated with each gene and found out that there are genes with complex regulatory networks like Foxp1 with 383 associated Activators and 157 associated Repressors. However, most genes are only associated to a small amount of CREs.
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Distribution_associated_CREs_per_gene.png" width="50%" />
-<p class="caption"> <b>Fig. n. </b>b> Distribution of associated CREs per Gene</p>
+<p class="caption"> <b>Fig. 30. </b>b> Distribution of associated CREs per Gene</p>
 </div>
 
 ## Regression analysis
@@ -351,7 +348,17 @@ We find that 52.5 % of CREs serve both activating and repressing roles across 
 
 # Discussion
 
-TODO: Write this
+Our Integrative analysis of the ATAC-seq and RNA-seq data reveals a complex regulatory architecture in ILCs. In particular, we observed that the OCRs in NK cells present dynamic accessibility patterns, suggesting that a stage-specific regulation took place. Meanwhile ILCs show a more stable Chromatin Landscape. This agrees with previous studies that describe ILCs as more differentiated and functionally determined populations (Vivier et al., 2018).
+
+While most of the CREs are located in intronic or intergenic regions, we also found that the ones located in Promoters have a significantly higher correlation with gene expression. Our results also show that activating and repressing CREs co-localize, but take over different regulatory niches in the regulatory space, adding a new additional functional dimension to Chromatin Accessibility. 
+
+Surprisingly, we did not find any promoters associated with more than one gene, suggesting a high level of one to one specificity on this cell type. We also detected genes with complexe regulatory networks, regulated by multiple CREs, which can be related to essential functions or specific activation contexts. 
+We also found out that it is possible to cluster cell types based on ATAC-seq or RNA-seq alone and find cell lineage specific genes that could be crucial to determine the biological importance of ILCs compared to other immune cell types. 
+
+It would be interesting to analyze gene expression and ATAC Signals when ILCs are activated or in inflammatory conditions to see if there are any changes in the results. 
+
+In Conclusion, our findings contribute to a deeper understanding of the gene regulation of ILCs and set the ground information for further functional and comparative research. 
+
 
 # References
 
@@ -363,6 +370,7 @@ TODO: Write this
 - <a id="6">[6]</a> Clottu AS, Humbel M, Fluder N, Karampetsou MP, Comte D. Innate Lymphoid Cells in Autoimmune Diseases. Front Immunol. 2022 Jan 7;12:789788. PMID: 35069567; PMCID: PMC8777080. https://doi.org/10.3389/fimmu.2021.789788
 - <a id="7">[7]</a> Crinier A, Narni-Mancinelli E, Ugolini S, Vivier E. SnapShot: Natural Killer Cells. Cell. 2020 Mar 19;180(6):1280-1280.e1. PMID: 32200803. https://doi.org/10.1016/j.cell.2020.02.029
 - <a id="8">[8]</a> Image source: https://www.addgene.org/mol-bio-reference/promoters/
+- <a id="9">[9]</a> Vivier, E., Artis, D., Colonna, M., Diefenbach, A., Di Santo, J. P., Eberl, G., Koyasu, S., Locksley, R. M., McKenzie, A. N. J., Mebius, R. E., Powrie, F., & Spits, H. (2018). Innate Lymphoid Cells: 10 Years On. Cell, 174(5), 1054–1066. https://doi.org/10.1016/j.cell.2018.07.017
 
 # Repository Usage and Structure
 TODO: Write more info here
@@ -413,5 +421,7 @@ Then commit (stating the package(s) you added) and sync the updated **environmen
 ├───plots                   - plots generated by jupyter notebooks
 │   ├───qc
 │   ├───regression
+│   ├───Correlation
+│   ├───Clustering_RNA-seq
 │   └───tss
 ```
