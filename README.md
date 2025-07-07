@@ -9,7 +9,9 @@ In this project, we analyzed data from RNA-seq and ATAC-seq of innate lymphoid c
 - [Results](#results)
   - [Quality Control](#quality-control)
   - [Transcription Start Site analysis](#transcription-start-site-analysis)
-  - [Do related cell types cluster together based on their ATAC signal?](#do-related-cell-types-cluster-together-based-on-their-atac-signal)
+  - [Clustering by ATAC signal](#clustering-by-atac-signal)
+    - [Do related cell types cluster together based on their ATAC signal?](#do-related-cell-types-cluster-together-based-on-their-atac-signal)
+    - [Can one define different classes of peaks?](#can-one-define-different-classes-of-peaks)
   - [Clustering by expression profile](#clustering-by-expression-profile)
   - [Correlation Analysis between CREs and Gene Expression](#correlation-analysis-between-cres-and-gene-expression)
   - [Regression analysis](#regression-analysis)
@@ -85,14 +87,14 @@ TODO: Write something in general?
 
 <div class="figure" style="text-align: center">
 <img src="plots/qc/correlation_atac_qc.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Correlation heatmap of cell-type statistics to QC metrics</p>
+<p class="caption"> <b>Fig. 4.</b> Correlation heatmap of cell-type statistics to QC metrics</p>
 </div>
 
 We computed per‑sample (cell‑type) statistics — mean, median, and standard deviation of peak accessibility — and compared these to library QC metrics (total reads, duplication rate, TSS‑enrichment, etc.). There is no clear unexpected relationship in the above analysis so we will work with all of the cell types.
 
 <div class="figure" style="text-align: center">
 <img src="plots/qc/pairplot_atac.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Pairplot of per ATAC-peak statistics against each other</p>
+<p class="caption"> <b>Fig. 5.</b> Pairplot of per ATAC-peak statistics against each other</p>
 </div>
 
 For each CRE, we computed mean, range (max–min), variance, coefficient of variation (std/mean), and skewness across cell types. There were no clear outliers, so no peaks were excluded from further analysis.
@@ -101,7 +103,7 @@ For each CRE, we computed mean, range (max–min), variance, coefficient of vari
 
 <div class="figure" style="text-align: center">
 <img src="plots/tss/distances_to_TSS.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Distribution of Open Chromatin Region distance to nearest Transcription Start Site</p>
+<p class="caption"> <b>Fig. 6.</b> Distribution of Open Chromatin Region distance to nearest Transcription Start Site</p>
 </div>
 
 The distance of Open Chromatin Regions to their nearest Transcription Start Site roughly follows a normal distribution with some significant peaks up- and downstream at around *300 bp* from the TSS.
@@ -109,43 +111,43 @@ The distance of Open Chromatin Regions to their nearest Transcription Start Site
 
 <div class="figure" style="text-align: center">
 <img src="plots/tss/accessibility_vs_tss_distance.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Scatterplot of accessibility vs Transcription Start Site distance</p>
+<p class="caption"> <b>Fig. 7.</b> Scatterplot of accessibility vs Transcription Start Site distance</p>
 </div>
 
 A scatter of mean accessibility versus distance reveals a decaying trend: peaks closer to the TSS tend to be more accessible.
 
 
-<div class="figure" style="text-align: center">
+<div class="figure" style="text-align: center" id="fig8">
 <img src="plots/tss/promoter_vs_enhancer.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Barplot of Promoter and Enhancer mean/variation of accessibility</p>
+<p class="caption"> <b>Fig. 8.</b> Barplot of Promoter and Enhancer mean/variation of accessibility</p>
 </div>
 
-Promoter peaks (-200bp to +150 bp of TSS) exhibit higher mean and lower variance than distal enhancers (t-test p = 0, Figure X).
+Promoter peaks (-200bp to +150 bp of TSS) exhibit higher mean and lower variance than distal enhancers (t-test $p = 0$, [Fig. 8](#fig8)).
 
 - Promoters: median mean = 14.19, CV = 1.17
-- Enhancers: median mean =1.72, CV = 1.63
+- Enhancers: median mean = 1.72, CV = 1.63
 
 This clear separation justifies treating promoters and enhancers separately in feature filtering and clustering.
 
 <div class="figure" style="text-align: center">
 <img src="plots/tss/extragenic_vs_intragenic.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Barplot of intragenic and extragenic Enhancer mean/variation of accessibility</p>
+<p class="caption"> <b>Fig. 9.</b> Barplot of intragenic and extragenic Enhancer mean/variation of accessibility</p>
 </div>
 Comparing intronic enhancers (within gene bodies) to intergenic enhancers shows:
 
-- Intronic: higher average signal (median = 1.73) and lower spread (CV = 1.39). slight downstream bias in distance distribution (Figure X).
+- Intronic: higher average signal (median = 1.73) and lower spread (CV = 1.39). slight downstream bias in distance distribution [(Fig. 10)](#fig10).
 - Intergenic: broader distance spread (CV = 1.76) and lower average signal (median = 1.70).
 
 These patterns suggest intronic enhancers are often more dynamic but also potentially more context‑specific than distal elements.
 
-<div class="figure" style="text-align: center">
+<div class="figure" style="text-align: center" id="fig10">
 <img src="plots/tss/intragenic_vs_extragenic_distance.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Scatterplot of enhancer accessibility vs Transcription Start Site distance classified by location</p>
+<p class="caption"> <b>Fig. 10.</b> Scatterplot of enhancer accessibility vs Transcription Start Site distance classified by location</p>
 </div>
 
-##Clustering by ATAC signal
+## Clustering by ATAC signal
 
-## Do related cell types cluster together based on their ATAC signal?
+### Do related cell types cluster together based on their ATAC signal?
 
 
 We investigated whether NK and ILC subtypes cluster together based on their ATAC-seq profiles. We selected the relevant columns from the ATAC-seq dataset and transposed the matrix to cluster cell types (now in rows) according to their chromatin accessibility patterns. Using KMeans clustering and Pearson correlation, we generated a heatmap and dendrogram for visualization. The results revealed distinct clusters: ILC subtypes grouped together, as did NK subtypes, indicating that the clustering captured known biological relationships. Interestingly, ILC2 cells showed lower correlation with ILC3 subsets. We also quantified the average correlation within and between groups. NK and ILC cells each showed high internal similarity (mean r = 0.90), while the correlation between NK and ILC cells was slightly lower (r = 0.82). This high but reduced inter-group correlation reflects their shared developmental origin and innate immune function, alongside distinct epigenetic programs
@@ -161,7 +163,7 @@ To further demonstrate that cell types cluster according to their ATAC signal, w
 
 <img width="181" alt="kmeans_table_iii" src="https://github.com/user-attachments/assets/7d59ebb3-af00-451f-be8e-b384f0c3e2c8" />
 
-##Can one define different classes of peaks?
+### Can one define different classes of peaks?
 
 In this section, we take a closer look at the OCR × cell type matrix to determine whether different classes of peaks can be defined based on their signal variation across NK and ILC subtypes.
 For each OCR, a Gini index is computed to quantify how unevenly the region is accessible across the selected cell types. A low Gini index indicates widespread accessibility, whereas a high Gini index suggests cell-type-specific activity.
@@ -196,6 +198,7 @@ Cluster 4 CREs also show dynamic regulation during NK development in the bone ma
 
 
 Cluster 4 CREs also show dynamic regulation during NK development in the bone marrow, with early and late peaks in activity.
+
 ## Clustering by expression profile
 
 Gene Expression profile usually reveals important information about cell differentiation and regulation. We tried different clustering techniques to see if we could find differentially expressed genes for ILC and their subtypes. Comparing the expression profiles we could make different hypotheses of how ILC subtypes are related to each other. 
