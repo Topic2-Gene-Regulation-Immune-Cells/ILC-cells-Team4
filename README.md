@@ -49,7 +49,7 @@ RNA sequencing (RNA-seq) is a high-throughput technique that allows for comprehe
 By linking chromatin accessibility to transcriptional states, ATAC-seq and RNA seq serve as a efficient technique in decoding the regulatory network of the genome and therefore analyse cell differentiation and relationships between closely related cells.
 
 <div class="figure" style="text-align: center">
-<img src="figures/yoshida_immune_cells.png" alt="Analysis of Immune cell types through combining RNA- seq and ATAc-seq" width="50%" />
+<img src="figures/yoshida_immune_cells.png" alt="Analysis of Immune cell types through combining RNA- seq and ATAc-seq" width="60%" />
 <p class="caption"> <b>Fig. 2.</b> Analysis of Immune cell types through combining RNA- seq and ATAC-seq (Yoshida et al. 2019) </p>
 </div>
 
@@ -62,7 +62,7 @@ ILCs are a heterogenic set of immune cells that play crucial roles in early defe
 Natural killer (NK) cells are closely related to ILCs but are unique in their ability to directly destroy infected or abnormal cells. NK cells develop through several stages, each marked by different surface proteins and transcription factors, and gradually acquire the tools needed for surveillance and cytotoxicity [(7)](#7). NK cells originate in the bone marrow (BM) and progress through stages marked by CD27 and CD11b expression, transitioning from NK.27+11b−.BM to NK.27+11b+.BM and NK.27−11b+.BM. These subsets also appear in the spleen (Sp), indicating migration and continued maturation [(Fig. 3)](#fig3).
 
 <div class="figure" style="text-align: center" id="fig3">
-<img src="figures/yoshida_differentiation.png" alt="Differentiation of immune cells" width="50%" />
+<img src="figures/yoshida_differentiation.png" alt="Differentiation of immune cells" width="60%" />
 <p class="caption"> <b>Fig. 3.</b> Differentiation of immune cells (Yoshida et al. 2019) </p>
 </div>
 
@@ -83,14 +83,14 @@ TODO: Write something in general?
 ## Quality Control
 
 <div class="figure" style="text-align: center">
-<img src="plots/qc/correlation_atac_qc.png" width="50%" />
+<img src="plots/qc/correlation_atac_qc.png" width="60%" />
 <p class="caption"> <b>Fig. 4.</b> Correlation heatmap of cell-type statistics to QC metrics</p>
 </div>
 
 We computed per‑sample (cell‑type) statistics — mean, median, and standard deviation of peak accessibility — and compared these to library QC metrics (total reads, duplication rate, TSS‑enrichment, etc.). There is no clear unexpected relationship in the above analysis so we will work with all of the cell types.
 
 <div class="figure" style="text-align: center">
-<img src="plots/qc/pairplot_atac.png" width="50%" />
+<img src="plots/qc/pairplot_atac.png" width="60%" />
 <p class="caption"> <b>Fig. 5.</b> Pairplot of per ATAC-peak statistics against each other</p>
 </div>
 
@@ -99,7 +99,7 @@ For each CRE, we computed mean, range (max–min), variance, coefficient of vari
 ## Transcription Start Site analysis
 
 <div class="figure" style="text-align: center">
-<img src="plots/tss/distances_to_TSS.png" width="50%" />
+<img src="plots/tss/distances_to_TSS.png" width="60%" />
 <p class="caption"> <b>Fig. 6.</b> Distribution of Open Chromatin Region distance to nearest Transcription Start Site</p>
 </div>
 
@@ -107,7 +107,7 @@ The distance of Open Chromatin Regions to their nearest Transcription Start Site
 
 
 <div class="figure" style="text-align: center">
-<img src="plots/tss/accessibility_vs_tss_distance.png" width="50%" />
+<img src="plots/tss/accessibility_vs_tss_distance.png" width="60%" />
 <p class="caption"> <b>Fig. 7.</b> Scatterplot of accessibility vs Transcription Start Site distance</p>
 </div>
 
@@ -115,7 +115,7 @@ A scatter of mean accessibility versus distance reveals a decaying trend: peaks 
 
 
 <div class="figure" style="text-align: center" id="fig8">
-<img src="plots/tss/promoter_vs_enhancer.png" width="50%" />
+<img src="plots/tss/promoter_vs_enhancer.png" width="60%" />
 <p class="caption"> <b>Fig. 8.</b> Barplot of Promoter and Enhancer mean/variation of accessibility</p>
 </div>
 
@@ -127,7 +127,7 @@ Promoter peaks (-200bp to +150 bp of TSS) exhibit higher mean and lower varian
 This clear separation justifies treating promoters and enhancers separately in feature filtering and clustering.
 
 <div class="figure" style="text-align: center">
-<img src="plots/tss/extragenic_vs_intragenic.png" width="50%" />
+<img src="plots/tss/extragenic_vs_intragenic.png" width="60%" />
 <p class="caption"> <b>Fig. 9.</b> Barplot of intragenic and extragenic Enhancer mean/variation of accessibility</p>
 </div>
 Comparing intronic enhancers (within gene bodies) to intergenic enhancers shows:
@@ -138,7 +138,7 @@ Comparing intronic enhancers (within gene bodies) to intergenic enhancers shows:
 These patterns suggest intronic enhancers are often more dynamic but also potentially more context‑specific than distal elements.
 
 <div class="figure" style="text-align: center" id="fig10">
-<img src="plots/tss/intragenic_vs_extragenic_distance.png" width="50%" />
+<img src="plots/tss/intragenic_vs_extragenic_distance.png" width="60%" />
 <p class="caption"> <b>Fig. 10.</b> Scatterplot of enhancer accessibility vs Transcription Start Site distance classified by location</p>
 </div>
 
@@ -149,16 +149,24 @@ These patterns suggest intronic enhancers are often more dynamic but also potent
 
 We investigated whether NK and ILC subtypes cluster together based on their ATAC-seq profiles. We selected the relevant columns from the ATAC-seq dataset and transposed the matrix to cluster cell types (now in rows) according to their chromatin accessibility patterns. Using KMeans clustering and Pearson correlation, we generated a heatmap and dendrogram for visualization. The results revealed distinct clusters: ILC subtypes grouped together, as did NK subtypes, indicating that the clustering captured known biological relationships. Interestingly, ILC2 cells showed lower correlation with ILC3 subsets. We also quantified the average correlation within and between groups. NK and ILC cells each showed high internal similarity (mean r = 0.90), while the correlation between NK and ILC cells was slightly lower (r = 0.82). This high but reduced inter-group correlation reflects their shared developmental origin and innate immune function, alongside distinct epigenetic programs
 
-![Pearson_correlation_iii](https://github.com/user-attachments/assets/78392f44-06b2-40d1-8f68-dd161436c334)
-
+<div class="figure" style="text-align: center">
+<img src="https://github.com/user-attachments/assets/78392f44-06b2-40d1-8f68-dd161436c334" width="60%" />
+<p class="caption"> <b>Fig. 11.</b> Sorted Correlation Matrix of NK and ILC Cell Types</p>
+</div>
 
 Next, we compared ILC and NK subtypes to related pro-T and pre-T cells using KMeans clustering (n=7, determined via elbow method) and Pearson correlation. A heatmap and dendrogram with Ward’s linkage showed clear clustering: NK and ILC subtypes each formed distinct, highly correlated groups (r > 0.9), while remaining separate from T-cell precursors. NK cells showed strongest internal similarity, and ILCs correlated more with NK cells than with other lineages. This supports the idea that ATAC-seq profiles reflect functional and developmental relationships between immune cells.
 
-![pearson2_iii](https://github.com/user-attachments/assets/86f9e18c-e6c9-4386-b310-9f8097000549)
+<div class="figure" style="text-align: center">
+<img src="https://github.com/user-attachments/assets/86f9e18c-e6c9-4386-b310-9f8097000549" width="60%" />
+<p class="caption"> <b>Fig. 12.</b> Hierarchical Clustering of Immune Cell Types based on OCR Chromatin Accessibility</p>
+</div>
 
 To further demonstrate that cell types cluster according to their ATAC signal, we performed KMeans clustering and generated a table listing each cell type along with its assigned cluster. The ILC cell types are clustered together in the same group. With one exception — the NK.27+11b-.Sp cells — the NK cells also clustered together. The distinct clustering of the NK.27+11b-.Sp cells may be explained by their less mature stage compared to CD11b+ subtypes.
 
-<img width="181" alt="kmeans_table_iii" src="https://github.com/user-attachments/assets/7d59ebb3-af00-451f-be8e-b384f0c3e2c8" />
+<div class="figure" style="text-align: center">
+<img src="https://github.com/user-attachments/assets/7d59ebb3-af00-451f-be8e-b384f0c3e2c8" width="60%" />
+<p class="caption"> <b>Fig. 13.</b> Table of cell type KMeans Cluster assignment</p>
+</div>
 
 ### Can one define different classes of peaks?
 
@@ -168,31 +176,39 @@ Next, t-SNE dimensionality reduction is applied to project all OCRs into two dim
 Regions with low Gini scores (blue/green) appear clustered together, representing broadly accessible OCRs likely associated with housekeeping or shared regulatory elements. In contrast, OCRs with high Gini scores (orange/red) form distinct clusters, indicating cell-type-specific accessibility, potentially corresponding to lineage-defining enhancers or promoters.
 This pattern supports the hypothesis that CREs can be grouped into distinct functional classes based on their variability in accessibility.
 
-![Gini_index1_iv](https://github.com/user-attachments/assets/8300a9dc-8298-4045-8200-66e55756a59e)
-
+<div class="figure" style="text-align: center">
+<img src="https://github.com/user-attachments/assets/8300a9dc-8298-4045-8200-66e55756a59e" width="60%" />
+<p class="caption"> <b>Fig. 14.</b> t-SNE of Open Chromatin Regions colored by Gini Index</p>
+</div>
 
 To further validate that, each OCR was classified as NK-, ILC-, or non-specific based on relative signal strength. Using t-SNE, we projected the data into two dimensions and visualized NK-specific OCRs in pink. These formed a distinct cluster, indicating shared regulatory patterns unique to NK cells. A similar pattern was observed for ILC-specific OCRs, supporting the idea that chromatin accessibility reflects cell-type-specific regulatory activity
 
-
-![NK_tsne_iv](https://github.com/user-attachments/assets/449e5e4c-27b6-46c0-a9aa-9c4f284cabe0)
-![ILC_tsne_iv](https://github.com/user-attachments/assets/9a491e20-42e7-44d0-8a7b-068b8d4f7f23)
-
+<div class="figure" style="text-align: center">
+<img src="https://github.com/user-attachments/assets/449e5e4c-27b6-46c0-a9aa-9c4f284cabe0" width="60%" />
+<img src="https://github.com/user-attachments/assets/9a491e20-42e7-44d0-8a7b-068b8d4f7f23" width="60%" />
+<p class="caption"> <b>Fig. 15.</b> t-SNE of Open Chromatin Regions for NK- and ILC-cells</p>
+</div>
 
 To identify cell type specific clusters, we performed KMeans clustering and grouped the clusters by their mean accessibility. The heatmap visualizes the clusters: each row represents a group of OCRs with similar accessibility patterns across NK and ILC cell types. The observed differences between clusters — some showing broad accessibility (e.g., cluster 4) — suggest that distinct classes of peaks exist. This supports the idea that chromatin accessibility varies across cell types and can be used to define functionally distinct groups of regulatory elements.
 
-![Kmeans1_iv](https://github.com/user-attachments/assets/552da47f-bf77-4bc4-ae3d-0ce88ce9600f)
-
+<div class="figure" style="text-align: center">
+<img src="https://github.com/user-attachments/assets/552da47f-bf77-4bc4-ae3d-0ce88ce9600f" width="60%" />
+<p class="caption"> <b>Fig. 16.</b> Cluster Mean Accessibility per Cell Type</p>
+</div>
 
 Next, we determine if there are differences in activation of cluster 4 during NK differentiation. Cluster 4 is active in all three NK cell subtypes. All three cell types show relatively high mean accessibility, indicating that the CREs in Cluster 4 are accessible across NK subtypes in the spleen. There is a slight drop in accessibility from NK.27+11b−.Sp to NK.27+11b+.Sp, followed by an increase in NK.27−11b+.Sp. This suggests that some CREs in Cluster 4 may become transiently less active during intermediate stages of NK cell differentiation. The highest accessibility is observed in the NK.27−11b+.Sp subtype, possibly indicating mature or fully differentiated NK cells. 
 
-![CRE_activity1_iv](https://github.com/user-attachments/assets/6cfbaf7b-f08d-4092-b8f3-6190c33f4e36)
-
+<div class="figure" style="text-align: center">
+<img src="https://github.com/user-attachments/assets/6cfbaf7b-f08d-4092-b8f3-6190c33f4e36" width="60%" />
+<p class="caption"> <b>Fig. 17.</b> CRE activity along Differentiation Path for Cluster 4</p>
+</div>
 
 Cluster 4 CREs also show dynamic regulation during NK development in the bone marrow, with early and late peaks in activity
 
-
-![CRE_activity2_iv](https://github.com/user-attachments/assets/e8e6a0e1-f269-4279-8ee5-c765cbd38691)
-
+<div class="figure" style="text-align: center">
+<img src="https://github.com/user-attachments/assets/e8e6a0e1-f269-4279-8ee5-c765cbd38691" width="60%" />
+<p class="caption"> <b>Fig. 18.</b> CRE activity along Differentiation Path for Cluster 4</p>
+</div>
 
 Cluster 4 CREs also show dynamic regulation during NK development in the bone marrow, with early and late peaks in activity.
 
@@ -348,7 +364,7 @@ We find that 52.5 % of CREs serve both activating and repressing roles across 
 
 # Discussion
 
-Our Integrative analysis of the ATAC-seq and RNA-seq data reveals a complex regulatory architecture in ILCs. In particular, we observed that the OCRs in NK cells present dynamic accessibility patterns, suggesting that a stage-specific regulation took place. Meanwhile ILCs show a more stable Chromatin Landscape. This agrees with previous studies that describe ILCs as more differentiated and functionally determined populations (Vivier et al., 2018).
+Our Integrative analysis of the ATAC-seq and RNA-seq data reveals a complex regulatory architecture in ILCs. In particular, we observed that the OCRs in NK cells present dynamic accessibility patterns, suggesting that a stage-specific regulation took place. Meanwhile ILCs show a more stable Chromatin Landscape. This agrees with previous studies that describe ILCs as more differentiated and functionally determined populations [(Vivier et al., 2018)](#9).
 
 While most of the CREs are located in intronic or intergenic regions, we also found that the ones located in Promoters have a significantly higher correlation with gene expression. Our results also show that activating and repressing CREs co-localize, but take over different regulatory niches in the regulatory space, adding a new additional functional dimension to Chromatin Accessibility. 
 
