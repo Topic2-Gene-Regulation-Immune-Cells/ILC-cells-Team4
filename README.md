@@ -9,6 +9,7 @@ In this project, we analyzed data from RNA-seq and ATAC-seq of innate lymphoid c
 - [Results](#results)
   - [Quality Control](#quality-control)
   - [Transcription Start Site analysis](#transcription-start-site-analysis)
+  - [Clustering by ATAC signal]
   - [Clustering by expression profile](#clustering-by-expression-profile)
   - [Correlation Analysis between CREs and Gene Expression](#correlation-analysis-between-cres-and-gene-expression)
   - [Regression analysis](#regression-analysis)
@@ -142,6 +143,8 @@ These patterns suggest intronic enhancers are often more dynamic but also potent
 <p class="caption"> <b>Fig. n.</b> Scatterplot of enhancer accessibility vs Transcription Start Site distance classified by location</p>
 </div>
 
+##Clustering by ATAC signal
+
 ## Do related cell types cluster together based on their ATAC signal?
 
 
@@ -158,7 +161,7 @@ To further demonstrate that cell types cluster according to their ATAC signal, w
 
 <img width="181" alt="kmeans_table_iii" src="https://github.com/user-attachments/assets/7d59ebb3-af00-451f-be8e-b384f0c3e2c8" />
 
-##Clustering of peaks
+##Can one define different classes of peaks?
 
 In this section, we take a closer look at the OCR × cell type matrix to determine whether different classes of peaks can be defined based on their signal variation across NK and ILC subtypes.
 For each OCR, a Gini index is computed to quantify how unevenly the region is accessible across the selected cell types. A low Gini index indicates widespread accessibility, whereas a high Gini index suggests cell-type-specific activity.
