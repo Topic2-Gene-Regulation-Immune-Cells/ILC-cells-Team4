@@ -77,9 +77,6 @@ The last data set contains detailed information about gene structure and the pos
 
 # Results
 
-TODO: Write something in general?
-
-**TODO: Add rest of results**
 ## Quality Control
 
 <div class="figure" style="text-align: center">
@@ -410,7 +407,6 @@ In Conclusion, our findings contribute to a deeper understanding of the gene reg
 - <a id="9">[9]</a> Vivier, E., Artis, D., Colonna, M., Diefenbach, A., Di Santo, J. P., Eberl, G., Koyasu, S., Locksley, R. M., McKenzie, A. N. J., Mebius, R. E., Powrie, F., & Spits, H. (2018). Innate Lymphoid Cells: 10 Years On. Cell, 174(5), 1054–1066. https://doi.org/10.1016/j.cell.2018.07.017
 
 # Repository Usage and Structure
-TODO: Write more info here
 
 To download the data files we used and setup the structure for the data processing run the [00_setup.ipynb](00_setup.ipynb) notebook. This will automatically download the necessary files and create additional folders. If a download fails for some reason you can manually download them and place them in the **data/** directory.
 
