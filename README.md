@@ -369,7 +369,7 @@ We find that 52.5 % of CREs serve both activating and repressing roles across 
 
 <div class="figure" style="text-align: center">
 <img src="https://github.com/user-attachments/assets/228ddd94-4ed1-4f57-97e8-60c08992cbc0" width="100%" />
-<p class="caption"> <b>Fig. 40.</b> UMAP plots</p>
+<p class="caption"> <b>Fig. 40.</b> UMAP plots: Top left- clustering of associated peaks based on accessibility profiles; Bottom- hexbin plots that shows the distribution of activators compared to repressors with the same UMAP embedding; Top right- clustering after assigning each peak an additional dimension (as activator +1 or repressor -1)</p>
 </div>
 
 Clustering based solely on accessibility patterns for peaks that correlate to gene expression. Roughly 100.000 peaks from the 500.000 can be certainly classified as CREs based on correlation analysis. From the UMAP 4 clusters can be seen. The largest blue one represents the majority of CREs so it represents the “default” accessibility pattern among peaks that correlate with expression. 
