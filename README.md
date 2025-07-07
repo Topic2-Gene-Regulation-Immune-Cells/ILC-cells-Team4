@@ -298,73 +298,73 @@ Lastly, we wanted to see if Genes were regulated by more than one CRE. We counte
 
 ## Regression analysis
 
-<div class="figure" style="text-align: center">
+<div class="figure" style="text-align: center" id="fig31">
 <img src="plots/regression/r2_global_distribution.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Distribution of Variance Explained by CREs in the Global Model</p>
+<p class="caption"> <b>Fig. 31.</b> Distribution of Variance Explained by CREs in the Global Model</p>
 </div>
 
-We fitted a multivariate linear model for each gene using all CREs within ±100 kb as predictors. The distribution of global $R^2$-values (Figure X) shows a median of 0.97, indicating that the variance in gene expression across the immune cell types can be nearly completely explained by nearby chromatin accessibility for a lot of genes. 
+We fitted a multivariate linear model for each gene using all CREs within ±100 kb as predictors. The distribution of global $R^2$-values [(Fig. 31)](#fig31) shows a median of 0.97, indicating that the variance in gene expression across the immune cell types can be nearly completely explained by nearby chromatin accessibility for a lot of genes. 
 
-<div class="figure" style="text-align: center">
+<div class="figure" style="text-align: center" id="fig32">
 <img src="plots/regression/beta_difference_distribution.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Distribution of difference in CRE effect size between Global Model and ILC-only Model</p>
+<p class="caption"> <b>Fig. 32.</b> Distribution of difference in CRE effect size between Global Model and ILC-only Model</p>
 </div>
 
-By refitting the same model using only ILC samples, we observed systematic shifts in CRE effect sizes ($\Delta \beta = \beta_{\text{ILC}} − \beta_{\text{Global}}$) (Figure X). The mean $\Delta \beta$ is near zero, but the distribution has heavy tails, indicating that some CREs gain or lose substantial influence when focusing on the ILC lineage.
+By refitting the same model using only ILC samples, we observed systematic shifts in CRE effect sizes ($\Delta \beta = \beta_{\text{ILC}} − \beta_{\text{Global}}$) [(Fig. 32)](#fig32). The mean $\Delta \beta$ is near zero, but the distribution has heavy tails, indicating that some CREs gain or lose substantial influence when focusing on the ILC lineage.
 
-<div class="figure" style="text-align: center">
+<div class="figure" style="text-align: center" id="fig33">
 <img src="plots/regression/top_lineage_specific_genes_heatmap.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Heatmap of Top 20 genes with the largest variance explained difference between the models to their linked CREs</p>
+<p class="caption"> <b>Fig. 33.</b> Heatmap of Top 20 genes with the largest variance explained difference between the models to their linked CREs</p>
 </div>
 
-We ranked genes by the increase in explained variance ($\Delta R^2 = R^2_{\rm ILC} - R^2_{\rm Global}$​). The top 20 genes show an average $\Delta R^2$ of 0.96. Heat‑mapping their linked CREs’ $\Delta\beta$ (Figure X) reveals modules of peaks that become uniquely activating in ILCs—strong candidates for lineage‑defining enhancers.
+We ranked genes by the increase in explained variance ($\Delta R^2 = R^2_{\rm ILC} - R^2_{\rm Global}$​). The top 20 genes show an average $\Delta R^2$ of 0.96. Heat‑mapping their linked CREs’ $\Delta\beta$ [(Fig. 33)](#fig33) reveals modules of peaks that become uniquely activating in ILCs—strong candidates for lineage‑defining enhancers.
 
-<div class="figure" style="text-align: center">
+<div class="figure" style="text-align: center" id="fig34">
 <img src="plots/regression/beta_global_vs_pearson_r.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Scatterplot of CREs effect size vs Pearson correlation model</p>
+<p class="caption"> <b>Fig. 34.</b> Scatterplot of CREs effect size vs Pearson correlation model</p>
 </div>
 
-Comparing multivariate coefficients ($\beta_{\rm Global}$​) to univariate Pearson’s $r$ (Figure X) yields a very low correlation (Pearson $\rho$ ≈ 0.005).
+Comparing multivariate coefficients ($\beta_{\rm Global}$​) to univariate Pearson’s $r$ [(Fig. 34)](#fig34) yields a very low correlation (Pearson $\rho$ ≈ 0.005).
 
-<div class="figure" style="text-align: center">
+<div class="figure" style="text-align: center" id="fig35">
 <img src="plots/regression/activating_vs_repressing_counts.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Count of CREs classified by Effect Size</p>
+<p class="caption"> <b>Fig. 35.</b> Count of CREs classified by Effect Size</p>
 </div>
 
-We classify CREs by the sign of their global $\beta$: activating ($\beta>0.1$) vs repressing ($\beta<−0.1$). Activators comprise 45.1 % of CREs, while repressors are 43.9 % (Figure X), suggesting that activation and repression possess similar importance in regulation.
+We classify CREs by the sign of their global $\beta$: activating ($\beta>0.1$) vs repressing ($\beta<−0.1$). Activators comprise 45.1 % of CREs, while repressors are 43.9 % [(Fig. 35)](#fig35), suggesting that activation and repression possess similar importance in regulation.
 
 <div class="figure" style="text-align: center">
 <img src="plots/regression/dominant_regulatory_effect_piechart.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Piechart of dominant regulatory Effect percentage of the CREs per Gene</p>
+<p class="caption"> <b>Fig. 36.</b> Piechart of dominant regulatory Effect percentage of the CREs per Gene</p>
 </div>
 
 For each gene, we determine whether the majority of its CREs are activating or repressing. Approximately 38.5 % of genes are predominantly repressed, indicating that repression can be the primary mode of expression control for a significant gene subset.
 
 <div class="figure" style="text-align: center">
 <img src="plots/regression/promoters_regulatory_roles_pie_chart.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Piechart of Regulatory Effect roles percentage of Promoters</p>
+<p class="caption"> <b>Fig. 37.</b> Piechart of Regulatory Effect roles percentage of Promoters</p>
 </div>
 
 Approximately 10.2 % of promoters carry a predominantly repressing role, while 72.2 % can act either repressing or activating. 
 
-<div class="figure" style="text-align: center">
+<div class="figure" style="text-align: center" id="fig38">
 <img src="plots/regression/promoter_vs_enhancer_effects.png" width="40%" />
 <img src="plots/regression/intragenic_vs_extragenic_effects.png" width="40%" />
-<p class="caption"> <b>Fig. n.</b> Distribution of activating and repressing roles in Promoters/Enhancers and in intragenic/extragenic Enhancers</p>
+<p class="caption"> <b>Fig. 38.</b> Distribution of activating and repressing roles in Promoters/Enhancers and in intragenic/extragenic Enhancers</p>
 </div>
 
-Repressing and activating CREs have the same likelihood to lie intragenically (45.7 %),  but repressing CREs are slightly less enriched at promoters (57.6 % vs 59.3 % for activators) (Figure X). This suggests that promoter‑proximal sites slightly favor activating regulatory roles.
+Repressing and activating CREs have the same likelihood to lie intragenically (45.7 %),  but repressing CREs are slightly less enriched at promoters (57.6 % vs 59.3 % for activators) [(Fig. 38)](#fig38). This suggests that promoter‑proximal sites slightly favor activating regulatory roles.
 
 <div class="figure" style="text-align: center">
 <img src="plots/regression/cre_regulatory_roles_pie_chart.png" width="50%" />
-<p class="caption"> <b>Fig. n.</b> Piechart of Regulatory Effect roles percentage of the CREs</p>
+<p class="caption"> <b>Fig. 39.</b> Piechart of Regulatory Effect roles percentage of the CREs</p>
 </div>
 
 We find that 52.5 % of CREs serve both activating and repressing roles across different target genes. These dual‑role elements may integrate complex regulatory logic or reflect context‑dependent factor binding.
 
 <div class="figure" style="text-align: center">
 <img src="https://github.com/user-attachments/assets/228ddd94-4ed1-4f57-97e8-60c08992cbc0" width="100%" />
-<p class="caption"> <b>Fig. n.</b> UMAP plots</p>
+<p class="caption"> <b>Fig. 40.</b> UMAP plots</p>
 </div>
 
 Clustering based solely on accessibility patterns for peaks that correlate to gene expression. Roughly 100.000 peaks from the 500.000 can be certainly classified as CREs based on correlation analysis. From the UMAP 4 clusters can be seen. The largest blue one represents the majority of CREs so it represents the “default” accessibility pattern among peaks that correlate with expression. 
