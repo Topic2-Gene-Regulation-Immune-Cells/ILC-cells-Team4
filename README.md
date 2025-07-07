@@ -363,8 +363,8 @@ Repressing and activating CREs have the same likelihood to lie intragenically (4
 We find that 52.5 % of CREs serve both activating and repressing roles across different target genes. These dual‑role elements may integrate complex regulatory logic or reflect context‑dependent factor binding.
 
 <div class="figure" style="text-align: center">
-<img src="?" width="100%" />
-<p class="caption"> <b>Fig. n.</b> Piechart of Regulatory Effect roles percentage of the CREs</p>
+<img src="https://github.com/user-attachments/assets/228ddd94-4ed1-4f57-97e8-60c08992cbc0" width="100%" />
+<p class="caption"> <b>Fig. n.</b> UMAP plots</p>
 </div>
 
 Clustering based solely on accessibility patterns for peaks that correlate to gene expression. Roughly 100.000 peaks from the 500.000 can be certainly classified as CREs based on correlation analysis. From the UMAP 4 clusters can be seen. The largest blue one represents the majority of CREs so it represents the “default” accessibility pattern among peaks that correlate with expression. 
