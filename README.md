@@ -364,12 +364,13 @@ We find that 52.5 % of CREs serve both activating and repressing roles across 
 
 # Discussion
 
-Our Integrative analysis of the ATAC-seq and RNA-seq data reveals a complex regulatory architecture in ILCs. In particular, we observed that the OCRs in NK cells present dynamic accessibility patterns, suggesting that a stage-specific regulation took place. Meanwhile ILCs show a more stable Chromatin Landscape. This agrees with previous studies that describe ILCs as more differentiated and functionally determined populations [(Vivier et al., 2018)](#9).
+Our Integrative analysis of the ATAC-seq and RNA-seq data reveals a complex regulatory architecture in ILCs. 
 
 While most of the CREs are located in intronic or intergenic regions, we also found that the ones located in Promoters have a significantly higher correlation with gene expression. Our results also show that activating and repressing CREs co-localize, but take over different regulatory niches in the regulatory space, adding a new additional functional dimension to Chromatin Accessibility. 
 
 Surprisingly, we did not find any promoters associated with more than one gene, suggesting a high level of one to one specificity on this cell type. We also detected genes with complexe regulatory networks, regulated by multiple CREs, which can be related to essential functions or specific activation contexts. 
-We also found out that it is possible to cluster cell types based on ATAC-seq or RNA-seq alone and find cell lineage specific genes that could be crucial to determine the biological importance of ILCs compared to other immune cell types. 
+
+We also found out that it is possible to cluster cell types based on ATAC-seq or RNA-seq alone and find cell lineage specific genes that could be crucial to determine the biological importance of ILCs compared to other immune cell types. By clustering we found out that ILC2 cells formed a distinct group, unlike the ILC3 and NK cell populations, which formed subclusters. This suggests that ILC2s differentiates from other ILCs. 
 
 It would be interesting to analyze gene expression and ATAC Signals when ILCs are activated or in inflammatory conditions to see if there are any changes in the results. 
 
