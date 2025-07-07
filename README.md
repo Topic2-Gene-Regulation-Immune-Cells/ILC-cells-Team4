@@ -217,7 +217,7 @@ Cluster 4 CREs also show dynamic regulation during NK development in the bone ma
 <div class="figure" style="text-align: center">
 <img src="https://github.com/user-attachments/assets/803011bd-c911-40c8-b018-de803a8a7be1" width="40%" />
 <img src="https://github.com/user-attachments/assets/6818cf30-41cb-4cae-8a28-953d074cb54f" width="40%" />
-<p class="caption"> <b>Fig. 29.</b> PCA of ILC cells</p>
+<p class="caption"> <b>Fig. 19.</b> PCA of ILC cells</p>
 </div>
 
 The cell lineages are clustered based on their peaks in the left figure. PC1 clearly separates NK and ILC cells, while PC2 distinguishes ILC2 from ILC3. While PCA analysis based on gene expression (right) show a similar separation of lineages, with a more clear distinction for a certain type of NK cells (NK.27-11b+.BM).
@@ -254,7 +254,7 @@ After analyzing the RNA-seq and ATAC-seq data separately, the next step was to s
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/OCRs_Activators_vs_Repressors_per_Category.png" width="50%" />
-<p class="caption"> <b>Fig. 24. </b>b> Genomic Distibution of activating vs repressing CREs</p>
+<p class="caption"> <b>Fig. 24. </b> Genomic Distibution of activating vs repressing CREs</p>
 </div>
 
 OCRs are mostly located in introns or intergenic genome sequences.
@@ -262,7 +262,7 @@ This information can also be proved in the plot comparing the distance between T
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Distance_CRE-TSS.png" width="50%" />
-<p class="caption"> <b>Fig. 25. </b>b> Distance between CREs and the nearest TSS</p>
+<p class="caption"> <b>Fig. 25. </b> Distance between CREs and the nearest TSS</p>
 </div>
 
 We filtered for positive Pearson correlations between accessibility signals and expression profiles, this way we are only analyzing activating CREs that act as enhancers and promoters. There are 49990 positive associated OCRs to genes with an average correlation 0.37, this value proves that Activators elevate gene expression as expected. Filtering for negative correlations showed us that there are 48602 OCRs that negatively regulate Genes with an average correlation of -0.29. 
@@ -270,21 +270,21 @@ We used a heatmap to portray the Gene-OCR with the highest Correlation.
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Combined_OCR_Gene_Correlation.png" width="50%" />
-<p class="caption"> <b>Fig. 26. </b>b> Highest OCR-Gene Association</p>
+<p class="caption"> <b>Fig. 26. </b> Highest OCR-Gene Association</p>
 </div>
 
 We wanted to see where the most associated CREs to each gene were located. The Histogram shows the genomic category of all Top OCR-Gene Associations. Most are located on Introns or intergenic non-coding sequences. 
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Genomic_Categories_more_associated_CRE.png" width="50%" />
-<p class="caption"> <b>Fig. 27. </b>b> Genomic Categories of the most associated CREs</p>
+<p class="caption"> <b>Fig. 27. </b> Genomic Categories of the most associated CREs</p>
 </div>
 
 Later we counted how many associated CREs are located in promoter regions. The following pie chart shows the genomic category for both activators and repressors. Only 5.8% of associated CREs are located on promoters. 
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Combined_OCRs_Genomic_Category.png" width="50%" />
-<p class="caption"> <b>Fig. 28. </b>b> Genomic Categories of all OCR-Gene Association</p>
+<p class="caption"> <b>Fig. 28. </b> Genomic Categories of all OCR-Gene Association</p>
 </div>
 
 We also counted the amount of Genes associated with promoters. There are only 1833 Genes with CREs on their Promoters, this means that not all Genes associate with a promoter. This could be because the promoter was not accessible by the time of the measurements and blocked by transcription factors, or the other genes are regulated by distal CREs like Repressors and Enhancers. There are also no promoters that associate with more than one gene.
@@ -293,14 +293,14 @@ Most of the closest associated Activators to each gene are located on promoters,
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Genomic_Category_of_Closest_CRE_to_Gene.png" width="50%" />
-<p class="caption"> <b>Fig. 29. </b>b> Genomic Categories of the closest associated CREs to ech Gene</p>
+<p class="caption"> <b>Fig. 29. </b> Genomic Categories of the closest associated CREs to ech Gene</p>
 </div>
 
 Lastly, we wanted to see if Genes were regulated by more than one CRE. We counted how many CREs were associated with each gene and found out that there are genes with complex regulatory networks like Foxp1 with 383 associated Activators and 157 associated Repressors. However, most genes are only associated to a small amount of CREs.
 
 <div class="figure" style="text-align: center">
 <img src="plots/Correlation/Distribution_associated_CREs_per_gene.png" width="50%" />
-<p class="caption"> <b>Fig. 30. </b>b> Distribution of associated CREs per Gene</p>
+<p class="caption"> <b>Fig. 30. </b> Distribution of associated CREs per Gene</p>
 </div>
 
 ## Regression analysis
