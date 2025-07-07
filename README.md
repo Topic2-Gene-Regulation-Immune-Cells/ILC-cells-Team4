@@ -9,7 +9,7 @@ In this project, we analyzed data from RNA-seq and ATAC-seq of innate lymphoid c
 - [Results](#results)
   - [Quality Control](#quality-control)
   - [Transcription Start Site analysis](#transcription-start-site-analysis)
-  - [Clustering by ATAC signal]
+  - [Clustering by ATAC signal](#clustering-by-ATAC-signal)
   - [Clustering by expression profile](#clustering-by-expression-profile)
   - [Correlation Analysis between CREs and Gene Expression](#correlation-analysis-between-cres-and-gene-expression)
   - [Regression analysis](#regression-analysis)
