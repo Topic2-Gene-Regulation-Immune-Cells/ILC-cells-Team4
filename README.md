@@ -225,38 +225,38 @@ Some notebooks use processed data other notebooks. If a data file isn't found du
 To ease reproducibility of the jupyter notebooks we suggest using **conda** to install all the packages that were used in this project. For this you can use the following instructions to setup the working environment we used. All used python packages can be found and setup using the [environment.yml](environment.yml).
 ### Conda Setup
 To create the conda environment run
-```bash
+```shell
 conda env create -f environment.yml
 ```
 or update it using
-```bash
+```shell
 conda env update --file environment.yml --prune
 ```
 
 To test if the environment was installed successfully use
- ```bash
+ ```shell
  conda activate data_analysis
  conda list
  ```
  
 ### Installing new packages
 First make sure that you have the current version of **environment.yml** by syncing via the Source Control tab in VS Code. Then update your conda environment to the newest version by running
-```bash
+```shell
 conda env update --file environment.yml --prune
 ```
 in the terminal. After this you can install a new package by executing
-```bash
+```shell
 conda activate data_analysis
 conda install *thepackageyouwanttoadd*
 ```  
 If the installation was successful you can now update the **environment.yml** via
-```bash
+```shell
 conda export --no-builds -f environment.yml
 ```
 Then commit (stating the package(s) you added) and sync the updated **environment.yml**.
 
 ## File structure
-```
+```text
 ├───data                    - raw data
 ├───data-processed          - data processed by jupyter notebooks
 ├───figures                 - external figures used in the readme
