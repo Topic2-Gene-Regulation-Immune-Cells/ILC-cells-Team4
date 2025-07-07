@@ -9,7 +9,7 @@ In this project, we analyzed data from RNA-seq and ATAC-seq of innate lymphoid c
 - [Results](#results)
   - [Quality Control](#quality-control)
   - [Transcription Start Site analysis](#transcription-start-site-analysis)
-  - [Clustering by ATAC signal](#clustering-by-ATAC-signal)
+  - [Do related cell types cluster together based on their ATAC signal?](#do-related-cell-types-cluster-together-based-on-their-atac-signal)
   - [Clustering by expression profile](#clustering-by-expression-profile)
   - [Correlation Analysis between CREs and Gene Expression](#correlation-analysis-between-cres-and-gene-expression)
   - [Regression analysis](#regression-analysis)
@@ -323,6 +323,13 @@ We classify CREs by the sign of their global $\beta$: activating ($\beta>0.1$) v
 </div>
 
 For each gene, we determine whether the majority of its CREs are activating or repressing. Approximately 38.5 % of genes are predominantly repressed, indicating that repression can be the primary mode of expression control for a significant gene subset.
+
+<div class="figure" style="text-align: center">
+<img src="plots/regression/promoters_regulatory_roles_pie_chart.png" width="50%" />
+<p class="caption"> <b>Fig. n.</b> Piechart of Regulatory Effect roles percentage of Promoters</p>
+</div>
+
+Approximately 10.2 % of promoters carry a predominantly repressing role, while 72.2 % can act either repressing or activating. 
 
 <div class="figure" style="text-align: center">
 <img src="plots/regression/promoter_vs_enhancer_effects.png" width="40%" />
