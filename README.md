@@ -214,6 +214,13 @@ Cluster 4 CREs also show dynamic regulation during NK development in the bone ma
 
 ## Clustering by expression profile
 
+<div class="figure" style="text-align: center">
+<img src="https://github.com/user-attachments/assets/803011bd-c911-40c8-b018-de803a8a7be1" width="40%" />
+<img src="https://github.com/user-attachments/assets/6818cf30-41cb-4cae-8a28-953d074cb54f" width="40%" />
+<p class="caption"> <b>Fig. 29.</b> PCA of ILC cells</p>
+</div>
+
+The cell lineages are clustered based on their peaks in the left figure. PC1 clearly separates NK and ILC cells, while PC2 distinguishes ILC2 from ILC3. While PCA analysis based on gene expression (right) show a similar separation of lineages, with a more clear distinction for a certain type of NK cells (NK.27-11b+.BM).
 Gene Expression profile usually reveals important information about cell differentiation and regulation. We tried different clustering techniques to see if we could find differentially expressed genes for ILC and their subtypes. Comparing the expression profiles we could make different hypotheses of how ILC subtypes are related to each other. 
 By comparing the results by doing both PCA and UMAP we can see in both the same Cell subtypes cluster together.
 
