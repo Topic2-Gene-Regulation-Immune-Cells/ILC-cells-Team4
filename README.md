@@ -1,6 +1,10 @@
 In this project, we analyzed data from RNA-seq and ATAC-seq of innate lymphoid cells to characterize their regulatory landscape. We analyzed correlation and genomic distance, and modeled regression to answer key questions about how CRES influence gene expression, how they organize spatially in connection to TSSs and how specific these elements are for every cell type. Our goal was to identify regulatory profiles that define cell identity and allow to understand the mechanisms that control differentiation and function of this immune cells.
 
-### Table of Contents
+---
+
+<details>
+<summary><strong>Table of Contents</strong></summary>
+
 - [Introduction](#introduction)
   - [The gene regulatory network](#the-gene-regulatory-network)
   - [Innate lymphoid cells (ILC) and Natural Killer cells (NK)](#innate-lymphoid-cells-ilc-and-natural-killer-cells-nk)
@@ -22,6 +26,9 @@ In this project, we analyzed data from RNA-seq and ATAC-seq of innate lymphoid c
     - [Installing new packages](#installing-new-packages)
   - [File structure](#file-structure)
 
+</details>
+
+---
 
 # Introduction
 
