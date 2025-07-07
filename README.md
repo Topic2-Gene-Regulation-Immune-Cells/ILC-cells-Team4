@@ -142,6 +142,57 @@ These patterns suggest intronic enhancers are often more dynamic but also potent
 <p class="caption"> <b>Fig. n.</b> Scatterplot of enhancer accessibility vs Transcription Start Site distance classified by location</p>
 </div>
 
+## Do related cell types cluster together based on their ATAC signal?
+
+
+We investigated whether NK and ILC subtypes cluster together based on their ATAC-seq profiles. We selected the relevant columns from the ATAC-seq dataset and transposed the matrix to cluster cell types (now in rows) according to their chromatin accessibility patterns. Using KMeans clustering and Pearson correlation, we generated a heatmap and dendrogram for visualization. The results revealed distinct clusters: ILC subtypes grouped together, as did NK subtypes, indicating that the clustering captured known biological relationships. Interestingly, ILC2 cells showed lower correlation with ILC3 subsets. We also quantified the average correlation within and between groups. NK and ILC cells each showed high internal similarity (mean r = 0.90), while the correlation between NK and ILC cells was slightly lower (r = 0.82). This high but reduced inter-group correlation reflects their shared developmental origin and innate immune function, alongside distinct epigenetic programs
+
+![Pearson_correlation_iii](https://github.com/user-attachments/assets/78392f44-06b2-40d1-8f68-dd161436c334)
+
+
+Next, we compared ILC and NK subtypes to related pro-T and pre-T cells using KMeans clustering (n=7, determined via elbow method) and Pearson correlation. A heatmap and dendrogram with Ward’s linkage showed clear clustering: NK and ILC subtypes each formed distinct, highly correlated groups (r > 0.9), while remaining separate from T-cell precursors. NK cells showed strongest internal similarity, and ILCs correlated more with NK cells than with other lineages. This supports the idea that ATAC-seq profiles reflect functional and developmental relationships between immune cells.
+
+![pearson2_iii](https://github.com/user-attachments/assets/86f9e18c-e6c9-4386-b310-9f8097000549)
+
+To further demonstrate that cell types cluster according to their ATAC signal, we performed KMeans clustering and generated a table listing each cell type along with its assigned cluster. The ILC cell types are clustered together in the same group. With one exception — the NK.27+11b-.Sp cells — the NK cells also clustered together. The distinct clustering of the NK.27+11b-.Sp cells may be explained by their less mature stage compared to CD11b+ subtypes.
+
+<img width="181" alt="kmeans_table_iii" src="https://github.com/user-attachments/assets/7d59ebb3-af00-451f-be8e-b384f0c3e2c8" />
+
+##Clustering of peaks
+
+In this section, we take a closer look at the OCR × cell type matrix to determine whether different classes of peaks can be defined based on their signal variation across NK and ILC subtypes.
+For each OCR, a Gini index is computed to quantify how unevenly the region is accessible across the selected cell types. A low Gini index indicates widespread accessibility, whereas a high Gini index suggests cell-type-specific activity.
+Next, t-SNE dimensionality reduction is applied to project all OCRs into two dimensions based on their accessibility patterns. The resulting points are colored by their Gini scores to visualize how accessibility diversity is distributed across the landscape.
+Regions with low Gini scores (blue/green) appear clustered together, representing broadly accessible OCRs likely associated with housekeeping or shared regulatory elements. In contrast, OCRs with high Gini scores (orange/red) form distinct clusters, indicating cell-type-specific accessibility, potentially corresponding to lineage-defining enhancers or promoters.
+This pattern supports the hypothesis that CREs can be grouped into distinct functional classes based on their variability in accessibility.
+
+![Gini_index1_iv](https://github.com/user-attachments/assets/8300a9dc-8298-4045-8200-66e55756a59e)
+
+
+To further validate that, each OCR was classified as NK-, ILC-, or non-specific based on relative signal strength. Using t-SNE, we projected the data into two dimensions and visualized NK-specific OCRs in pink. These formed a distinct cluster, indicating shared regulatory patterns unique to NK cells. A similar pattern was observed for ILC-specific OCRs, supporting the idea that chromatin accessibility reflects cell-type-specific regulatory activity
+
+
+![NK_tsne_iv](https://github.com/user-attachments/assets/449e5e4c-27b6-46c0-a9aa-9c4f284cabe0)
+![ILC_tsne_iv](https://github.com/user-attachments/assets/9a491e20-42e7-44d0-8a7b-068b8d4f7f23)
+
+
+To identify cell type specific clusters, we performed KMeans clustering and grouped the clusters by their mean accessibility. The heatmap visualizes the clusters: each row represents a group of OCRs with similar accessibility patterns across NK and ILC cell types. The observed differences between clusters — some showing broad accessibility (e.g., cluster 4) — suggest that distinct classes of peaks exist. This supports the idea that chromatin accessibility varies across cell types and can be used to define functionally distinct groups of regulatory elements.
+
+![Kmeans1_iv](https://github.com/user-attachments/assets/552da47f-bf77-4bc4-ae3d-0ce88ce9600f)
+
+
+Next, we determine if there are differences in activation of cluster 4 during NK differentiation. Cluster 4 is active in all three NK cell subtypes. All three cell types show relatively high mean accessibility, indicating that the CREs in Cluster 4 are accessible across NK subtypes in the spleen. There is a slight drop in accessibility from NK.27+11b−.Sp to NK.27+11b+.Sp, followed by an increase in NK.27−11b+.Sp. This suggests that some CREs in Cluster 4 may become transiently less active during intermediate stages of NK cell differentiation. The highest accessibility is observed in the NK.27−11b+.Sp subtype, possibly indicating mature or fully differentiated NK cells. 
+
+![CRE_activity1_iv](https://github.com/user-attachments/assets/6cfbaf7b-f08d-4092-b8f3-6190c33f4e36)
+
+
+Cluster 4 CREs also show dynamic regulation during NK development in the bone marrow, with early and late peaks in activity
+
+
+![CRE_activity2_iv](https://github.com/user-attachments/assets/e8e6a0e1-f269-4279-8ee5-c765cbd38691)
+
+
+Cluster 4 CREs also show dynamic regulation during NK development in the bone marrow, with early and late peaks in activity.
 ## Clustering by expression profile
 
 Gene Expression profile usually reveals important information about cell differentiation and regulation. We tried different clustering techniques to see if we could find differentially expressed genes for ILC and their subtypes. Comparing the expression profiles we could make different hypotheses of how ILC subtypes are related to each other. 
